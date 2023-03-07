@@ -35,7 +35,9 @@ export function ProductCard(product: IProduct) {
       <div className="img__container">
         <img src={product.img} alt="" />
         <div className="card__hover">
-          <button type="button">adicionar produto ao carrinho</button>
+          <button onClick={() => addToCart(product)} type="button">
+            adicionar produto ao carrinho
+          </button>
         </div>
       </div>
       <h3>{product.name}</h3>
