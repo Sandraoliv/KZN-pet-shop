@@ -1,14 +1,12 @@
-import { FieldError, UseFormRegisterReturn } from 'react-hook-form';
-import { StyledTextField } from '../../../styles/form';
-
-import { StyledParagraph } from '../../../styles/typography';
+import { FieldError, UseFormRegisterReturn } from "react-hook-form";
+import { StyledFieldset } from "./style";
 
 interface IInput {
   placeholder: string;
-  label: string;
-  type: 'text' | 'password' | 'email';
+  type: string;
   register: UseFormRegisterReturn<string>;
   error?: FieldError;
+  label: string;
 }
 
 export const Input = ({
@@ -18,15 +16,9 @@ export const Input = ({
   register,
   error,
 }: IInput) => (
-  <fieldset>
-    <StyledTextField
-      placeholder={placeholder}
-      label={label}
-      type={type}
-      {...register}
-    />
-    <StyledParagraph fontColor='red'>
-      {error ? <p>{error.message}</p> : null}
-    </StyledParagraph>
-  </fieldset>
+  <StyledFieldset>
+    <label htmlFor={label}>{label}</label>
+    <input id={label} placeholder={placeholder} type={type} {...register} />
+    <div>{error ? <p className="errors">{error.message}</p> : null}</div>
+  </StyledFieldset>
 );
