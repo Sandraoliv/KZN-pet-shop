@@ -4,8 +4,8 @@ import { GrMenu } from "react-icons/gr";
 import logo from "../../assets/KZpet_shop_Logo.svg";
 import { StyledHeader } from "./styles";
 import { useContext, useState } from "react";
-import { ModalCart } from "../CartModal/cartModal";
-import { CartContext } from "../../provider/CartContext/CartContext";
+import { ModalCart } from "../../CartModal/cartModal";
+import { CartContext } from "../../../provider/CartContext/CartContext";
 
 export function Header() {
   const [menu, setMenu] = useState(false);

@@ -1,4 +1,4 @@
-import { Header } from "../../components/Header/header";
+import { Header } from "../../components/Header/headerShop/headerShop";
 import { StyledShop } from "./style";
 import { FiArrowRight } from "react-icons/fi";
 import { useContext, useEffect, useState } from "react";
