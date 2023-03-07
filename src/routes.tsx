@@ -3,7 +3,7 @@ import { LoginPage } from "./pages/LoginPage";
 import { NotFound } from "./pages/NotFound/notFound";
 import { PaymentPage } from "./pages/PaymentPage/paymentPage";
 import { RegisterPage } from "./pages/RegisterPage";
-import { ShopPage } from "./pages/ShopPage";
+import { ShopPage } from "./pages/ShopPage/shopPage";
 import { CartProvider } from "./provider/CartContext/CartContext";
 import { UserProvider } from "./provider/UserContext/UserContext";
 
