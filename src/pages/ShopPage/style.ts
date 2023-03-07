@@ -5,13 +5,13 @@ export const StyledShop = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
-  padding: 0 16px;
   z-index: 1;
 
   .banner {
     display: flex;
     flex-direction: column;
     align-items: center;
+
     width: 100%;
     background-color: var(--color-tertiary-transparent);
     padding: 16px 5vw;
@@ -57,7 +57,7 @@ export const StyledShop = styled.div`
   .paragraph {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     padding: 16px 0;
   }
 
@@ -224,7 +224,7 @@ export const StyledShop = styled.div`
     .paragraph {
       display: flex;
       flex-direction: column;
-      align-items: center;
+
       padding: 16px 0;
       width: 50%;
     }

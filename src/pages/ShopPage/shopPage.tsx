@@ -66,6 +66,12 @@ export function ShopPage() {
           <span>
             Venha conhecer e nos ajudar nessa causa que aquece o coração
           </span>
+          <a href="/#footer " className="buttonArrow">
+            <p>Instituições beneficiadas</p>
+            <div>
+              <FiArrowRight />
+            </div>
+          </a>
         </div>
 
         <div className="img__container--desktop">
@@ -75,12 +81,6 @@ export function ShopPage() {
           <span>Frete gratis para todo o Brasil</span>
           <span>30% do faturamento da nossa loja é doado</span>
         </div>
-        <a href="/#footer " className="buttonArrow">
-          <p>Instituições beneficiadas</p>
-          <div>
-            <FiArrowRight />
-          </div>
-        </a>
 
         <div className="img__container--mobile">
           <img src={cachorrinhoMobile} alt="" />

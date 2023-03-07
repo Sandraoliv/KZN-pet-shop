@@ -48,9 +48,9 @@ export function UserProvider({ children }: IDefaultProviderProps) {
   async function loginUser(formData: ILoginFormValues) {
     try {
       setLoading(true);
-      const response = await api.patch<IresponseLogin>("/login/", formData);
+      const response = await api.post<IresponseLogin>("/login", formData);
       localStorage.setItem("@token", response.data.accessToken);
-      setUser;
+
       setUser(response.data.user);
       // navigate("/shop");
     } catch (error) {

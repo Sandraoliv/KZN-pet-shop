@@ -8,8 +8,6 @@ export const StyledHeader = styled.header`
   padding: 8px 16px;
   justify-content: space-between;
   background-color: var(--color-tertiary-transparent);
-  border-bottom: solid 1px black;
-  /* box-shadow: 60px -16px black; */
 
   .navUp {
     display: flex;
@@ -77,6 +75,7 @@ export const StyledHeader = styled.header`
     border-radius: 5px;
     background-color: var(--color-secundary);
     color: white;
+    z-index: 10;
   }
 
   .login:hover {
