@@ -1,4 +1,5 @@
 import { ToastContainer } from "react-toastify";
+import { UserProvider } from "./provider/UserContext/UserContext";
 import { RouterComponent } from "./routes";
 import { GlobalStyles } from "./styles/global";
 
@@ -7,7 +8,9 @@ function App() {
 
   return (
     <>
-      <RouterComponent />
+      <UserProvider>
+        <RouterComponent />
+      </UserProvider>
       <GlobalStyles />
       <ToastContainer
         position="top-right"
