@@ -6,7 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
-
     <>
       <UserProvider>
         <RouterComponent />
@@ -25,7 +24,7 @@ function App() {
         pauseOnHover
         theme="light"
       />
-    </div>
+    </>
   );
 }
 
