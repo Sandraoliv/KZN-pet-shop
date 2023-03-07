@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
-import logo from "../../../assets/KZpet_shop_Logo.svg";
+import logo from "../../../assets/KNZLOGO.svg";
+import { GblHeader } from "./style";
 
-export function globalHeader() {
-  <header>
-    <ul>
-      <li>
-        <img src={logo} alt="" />
-      </li>
-      <li>
-        <Link to="/shop">Shop</Link>
-      </li>
-    </ul>
-  </header>;
+export function GlobalHeader() {
+  return (
+    <GblHeader>
+      <ul>
+        <li>
+          <img src={logo} alt="" />
+        </li>
+        <li>
+          <Link to="/">Shop</Link>
+        </li>
+      </ul>
+    </GblHeader>
+  );
 }
