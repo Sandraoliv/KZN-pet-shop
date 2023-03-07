@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { HiShoppingCart } from "react-icons/hi";
 import { GrMenu } from "react-icons/gr";
-import logo from "../../assets/KZpet_shop_Logo.svg";
+import logo from "../../../assets/KZpet_shop_Logo.svg";
 import { StyledHeader } from "./styles";
 import { useContext, useState } from "react";
 import { ModalCart } from "../../CartModal/cartModal";
