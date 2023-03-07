@@ -4,35 +4,23 @@ import { createContext, useState } from "react";
 import { toast } from "react-toastify";
 import { api } from "../../services/api";
 
-import {
-  ICartContext,
-  IDefaultProviderProps,
-  IProductsListCart,
-  IResponseProduct,
-} from "./@Types";
+import { ICartContext, IDefaultProviderProps, IProduct } from "./@Types";
 
 export const CartContext = createContext({} as ICartContext);
 
 export function CartProvider({ children }: IDefaultProviderProps) {
   const [modal, setModal] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [productsListCart, setProductsListCart] = useState<IProductsListCart[]>(
-    []
-  );
+  const [productsListCart, setProductsListCart] = useState<IProduct[]>([]);
+  const [productList, setProductList] = useState<IProduct[]>([]);
 
   // const navigate = useNavigate();
 
-  const [productList, setProductList] = useState<IProductsListCart[]>([]);
-
   async function loadProductList() {
-    let token = localStorage.getItem("@token");
+    // let token = localStorage.getItem("@token");
     try {
       setLoading(true);
-      const response = await api.get<IResponseProduct[]>("/products", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await api.get<IProduct[]>("/products");
       setProductList(response.data);
     } catch (error) {
       if (axios.isAxiosError<string>(error)) {
@@ -49,20 +37,17 @@ export function CartProvider({ children }: IDefaultProviderProps) {
     }
   }
 
-  function closeModal() {
-    setModal(false);
-  }
-
-  function showModal() {
-    setModal(true);
+  function handleModal() {
+    setModal(!modal);
+    console.log(modal);
   }
 
   return (
     <CartContext.Provider
       value={{
-        closeModal,
+        handleModal,
         modal,
-        showModal,
+        setModal,
         productsListCart,
         setProductsListCart,
         productList,

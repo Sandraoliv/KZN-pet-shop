@@ -2,30 +2,21 @@ export interface IDefaultProviderProps {
   children: React.ReactNode;
 }
 
-export interface IResponseProduct {
+export interface IProduct {
   name: string;
   category: "Brinqueros" | "Coleiras" | "Produtos para Pet";
-  price: string;
+  description: string;
+  price: number;
   img: string;
-  id?: number;
-}
-
-export interface IProductsListCart {
-  name: string;
-  category: "Brinqueros" | "Coleiras" | "Produtos para Pet";
-  price: string;
-  img: string;
-  id?: number;
+  id: number;
 }
 export interface ICartContext {
-  closeModal: () => void;
+  handleModal(): void;
   modal: boolean;
-  showModal: () => void;
-  setProductsListCart: React.Dispatch<
-    React.SetStateAction<IProductsListCart[]>
-  >;
-  productsListCart: IProductsListCart[];
-  productList: IProductsListCart[];
-  setProductList: React.Dispatch<React.SetStateAction<IProductsListCart[]>>;
+  setModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setProductsListCart: React.Dispatch<React.SetStateAction<IProduct[]>>;
+  productsListCart: IProduct[];
+  productList: IProduct[];
+  setProductList: React.Dispatch<React.SetStateAction<IProduct[]>>;
   loadProductList(): Promise<void>;
 }

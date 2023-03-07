@@ -1,12 +1,11 @@
 import { ToastContainer } from "react-toastify";
 import { RouterComponent } from "./routes";
 import { GlobalStyles } from "./styles/global";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  console.log("lakfen");
-
   return (
-    <>
+    <div className="main__container">
       <RouterComponent />
       <GlobalStyles />
       <ToastContainer
@@ -21,7 +20,7 @@ function App() {
         pauseOnHover
         theme="light"
       />
-    </>
+    </div>
   );
 }
 

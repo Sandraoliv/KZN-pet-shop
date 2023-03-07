@@ -21,6 +21,7 @@ export const UserContext = createContext({} as IUserContext);
 
 export function UserProvider({ children }: IDefaultProviderProps) {
   // const navigate = useNavigate();
+
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<IUser>();
   let token = localStorage.getItem("@token");
