@@ -21,12 +21,6 @@ export const GblHeader = styled.header`
     width: 100%;
   }
 
-  li {
-  }
-
-  img {
-  }
-
   a {
     width: max-content;
     height: 52px;

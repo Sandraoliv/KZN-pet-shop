@@ -1,7 +1,10 @@
-import logo from "../../../assets/KZpet_shop_Logo.svg";
+import logo from "../../../assets/KNZLOGO.svg";
+import { SccHeader } from "./style";
 
 export function SuccessHeader() {
-  <header>
-    <img src={logo} alt="" />
-  </header>;
+  return (
+    <SccHeader>
+      <img src={logo} alt="" />
+    </SccHeader>
+  );
 }
