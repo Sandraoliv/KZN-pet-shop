@@ -30,28 +30,18 @@ export function LoginPage() {
             A cada compra sua, <br />
             um Amiguinho nosso <br />
             recebe uma doação.
-          </p>
-          <div className="arrowContainer ">
-            <img src={arrow} alt="imagem de seta" />
-            <img className="imgDesktop" src={animals} alt="imagem de animais" />
-          </div>
+          </p> */}
+      {/* </div> */}
+      {/* <div className="containerDesktop"> */}
+      <img className="imgDesktop" src={animals} alt="imagem de animais" />
+      <div className="formContainer">
+        <div className="blockAndTitle">
+          <img className="rectangle" src={block} alt="" />
+          <h2>Entrar</h2>
         </div>
-        <img src={elipse1} alt="imagem elipse" className="elipse1" />
-        <img src={elipse2} alt="imagem elipse" className="elipse2" />
-        <img src={elipse3} alt="imagem elipse" className="elipse3" />
-
-        <img src={elipse4} alt="" className="elipse4" />
-        <img src={elipse5} alt="" className="elipse5" />
-
-        <img src={elipse6} alt="" className="elipse6" />
-        <div className="formContainer">
-          <div className="blockAndTitle">
-            <img className="rectangle" src={block} alt="" />
-            <h2>Entrar</h2>
-          </div>
-          <LoginForm />
-        </div>
+        <LoginForm />
       </div>
-    </StyledLoginPage>
+      {/* </div> */}
+    <StyledLoginPage/>
   );
 }
