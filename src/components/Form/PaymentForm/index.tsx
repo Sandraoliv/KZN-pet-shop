@@ -12,6 +12,10 @@ export function PaymentForm() {
     navigate("/");
   }
 
+  let totalValue = 0;
+
+  productsListCart.map((product) => (totalValue = totalValue + product.price));
+  console.log(productsListCart);
   return (
     <StyledFormPayment>
       <h3>FINALIZAR COMPRA</h3>
@@ -20,6 +24,7 @@ export function PaymentForm() {
         label="Endereço"
         type="text"
       />
+      {InputPayment.length > 0 ? <p>Frete Gratis</p> : null}
       <label htmlFor="payment">Forma de pagamento:</label>
       <select id="payment" name="">
         <option value="pix">Pix</option>
@@ -28,14 +33,14 @@ export function PaymentForm() {
       </select>
       <div className="Text-Total">
         <p>TOTAL:</p>
-        <p>R$00,00</p>
+        <p>{totalValue}</p>
       </div>
       <div className="Text-Total">
         <p>TOTAL DOADO:</p>
-        <p>R$00,00</p>
+        <p>{(totalValue * 10) / 100}</p>
       </div>
       <div className="button-container">
-        <button>Finalizar compra</button>
+        <button onClick={() => submit()}>Finalizar compra</button>
       </div>
     </StyledFormPayment>
   );

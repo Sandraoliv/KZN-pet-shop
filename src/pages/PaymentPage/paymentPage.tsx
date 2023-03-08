@@ -1,13 +1,14 @@
 import { PaymentForm } from "../../components/Form/PaymentForm";
-import { StyledSectionPayment } from "./styles";
+import { GlobalHeader } from "../../components/Header/globalHeader/globalHeader";
+import { StyledPayment, StyledSectionPayment } from "./styles";
 
 export function PaymentPage() {
   return (
-    <>
-      {/*Header*/}
+    <StyledPayment>
+      <GlobalHeader />
       <StyledSectionPayment>
         <PaymentForm />
       </StyledSectionPayment>
-    </>
+    </StyledPayment>
   );
 }
