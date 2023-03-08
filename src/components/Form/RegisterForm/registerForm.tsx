@@ -7,6 +7,7 @@ import { IRegisterFormValues } from "../../../provider/UserContext/@Types";
 import { GlobalHeader } from "../../Header/globalHeader/globalHeader";
 import imgFormRegister from "../../../assets/imgFormRegister.svg";
 import { MainFormRegister, SectionFormRegister } from "./style";
+import { TextField } from "@material-ui/core";
 
 export function RegisterForm() {
   const { registerUser } = useContext(UserContext);
@@ -32,6 +33,13 @@ export function RegisterForm() {
         <form>
           <div></div>
           <h3>Cadastre-se</h3>
+
+          <TextField
+            id="outlined-password-input"
+            label="Digite seu nome aqui"
+            type="text"
+            autoComplete="current-password"
+          />
           <input
             placeholder="Digite seu nome aqui"
             {...register("name")}
