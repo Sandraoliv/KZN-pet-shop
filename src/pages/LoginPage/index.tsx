@@ -2,7 +2,6 @@ import { LoginForm } from "../../components/Form/LoginForm";
 import { StyledLoginForm } from "../../components/Form/LoginForm/styledLoginForm";
 import { StyledLoginPage } from "./style";
 import block from "../../assets/Rectangle 33.png";
-import animals from "../../assets/imagem e texto auxiliar.svg";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../provider/UserContext/UserContext";
@@ -32,7 +31,7 @@ export function LoginPage() {
           </p> */}
       {/* </div> */}
       {/* <div className="containerDesktop"> */}
-      <img className="imgDesktop" src={animals} alt="imagem de animais" />
+      <img className="imgDesktop" src="animals" alt="imagem de animais" />
       <div className="formContainer">
         <div className="blockAndTitle">
           <img className="rectangle" src={block} alt="" />
