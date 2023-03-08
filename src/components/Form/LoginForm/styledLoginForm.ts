@@ -19,28 +19,27 @@ export const StyledLoginForm = styled.form`
   }
 
   .loginButton {
-    background-color: #ff9b00;
-    color: #fff2ea;
+    background-color: var(--color-secundary);
+    color: var(--color-primary);
     width: 90%;
     height: 50px;
     font-size: 1.87rem;
     border-radius: 8px;
   }
   .loginButton:hover {
-    background: #ff9b00;
-    opacity: 0.7;
+    background: var(--color-secundary-hover);
   }
 
   .redirectButton {
-    background-color: #168821;
-    color: #fff2ea;
+    background-color: var(--color-assistant);
+    color: var(--color-primary);
     height: 50px;
     width: 90%;
     font-size: 1.87rem;
     border-radius: 8px;
   }
   .redirectButton:hover {
-    background-color: #adce53;
+    background-color: var(--color-assistant);
     opacity: 0.7;
   }
 `;
