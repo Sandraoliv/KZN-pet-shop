@@ -30,18 +30,19 @@ export function LoginPage() {
             A cada compra sua, <br />
             um Amiguinho nosso <br />
             recebe uma doação.
-          </p> */}
-      {/* </div> */}
-      {/* <div className="containerDesktop"> */}
-      <img className="imgDesktop" src={animals} alt="imagem de animais" />
-      <div className="formContainer">
-        <div className="blockAndTitle">
-          <img className="rectangle" src={block} alt="" />
-          <h2>Entrar</h2>
+          </p>
         </div>
-        <LoginForm />
       </div>
-      {/* </div> */}
-    <StyledLoginPage/>
+      <div className="containerDesktop">
+        <img className="imgDesktop" src={animals} alt="imagem de animais" />
+        <div className="formContainer">
+          <div className="blockAndTitle">
+            <img className="rectangle" src={block} alt="" />
+            <h2>Entrar</h2>
+          </div>
+          <LoginForm />
+        </div>
+      </div>
+    </StyledLoginPage>
   );
 }
