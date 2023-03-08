@@ -23,15 +23,7 @@ export function CartProvider({ children }: IDefaultProviderProps) {
       const response = await api.get<IProduct[]>("/products");
       setProductList(response.data);
     } catch (error) {
-      if (axios.isAxiosError<string>(error)) {
-        if (error.response?.data == "jwt expired") {
-          toast.error("Seu token de acesso espirou, faça login novamente");
-          localStorage.removeItem("@token");
-          // navigate("/login");
-        } else {
-          console.log(error);
-        }
-      }
+      console.log(error);
     } finally {
       setLoading(false);
     }
@@ -45,6 +37,7 @@ export function CartProvider({ children }: IDefaultProviderProps) {
   return (
     <CartContext.Provider
       value={{
+        loading,
         handleModal,
         modal,
         setModal,

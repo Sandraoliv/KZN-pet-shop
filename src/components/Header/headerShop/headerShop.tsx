@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import { HiShoppingCart } from "react-icons/hi";
 import { GrMenu } from "react-icons/gr";
-import logo from "../../../assets/KZpet_shop_Logo.svg";
 import { StyledHeader } from "./styles";
 import { useContext, useState } from "react";
 import { ModalCart } from "../../CartModal/cartModal";
 import { CartContext } from "../../../provider/CartContext/CartContext";
+
+import logo from "../../../assets/logo.svg";
 
 export function Header() {
   const [menu, setMenu] = useState(false);
@@ -17,15 +18,15 @@ export function Header() {
 
   return (
     // rever
-    <StyledHeader setMenu={setMenu} menu={menu}>
+    <StyledHeader menu={menu}>
       <div className="navUp">
         <div className="logo">
           {/* rever */}
+
           <img src={logo} alt="" />
         </div>
-
         <div className="nav">
-          <Link className="login" to="/">
+          <Link className="login" to="/login">
             {" "}
             Login{" "}
           </Link>
@@ -43,7 +44,7 @@ export function Header() {
       </div>
 
       <div className="navDown">
-        <Link className="login" to="/">
+        <Link className="login" to="/login">
           {" "}
           Login{" "}
         </Link>

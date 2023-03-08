@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { IProduct } from "../../../provider/CartContext/@Types";
 import { CartContext } from "../../../provider/CartContext/CartContext";
 import { CartProductCard } from "./CartProductCard/cartProductCard";
 import { StyledCartProductList } from "./style";

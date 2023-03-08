@@ -48,9 +48,6 @@ export function ProductCard(product: IProduct) {
             currency: "BRL",
           })}
         </span>
-        {/* <button onClick={() => addToCart(product)} type="button">
-          adicionar produto ao carrinho
-        </button> */}
       </div>
     </StyledProductCard>
   );
