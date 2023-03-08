@@ -4,6 +4,7 @@ export const StyledFieldset = styled.div`
   width: 90%;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   margin: 0 auto;
   gap: 8px;
 
@@ -21,5 +22,8 @@ export const StyledFieldset = styled.div`
   }
   .errors {
     font-size: 1rem;
+  }
+  ::placeholder {
+    color: var(--grey-300);
   }
 `;
