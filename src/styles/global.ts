@@ -30,7 +30,7 @@ svg {
     --color-assistant: #adce53;
     --color-tertiary-transparent:#e8f6fd;
     --color-secundary-hover : rgba(255, 185, 77);
-    /* 255, 185, 77 */
+
 
 
     --negative: #e60000;
