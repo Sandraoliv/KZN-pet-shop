@@ -9,7 +9,6 @@ export const StyledFieldsetPayment = styled.div`
 
   label {
     color: #ff9b00;
-    font-family: "Inter";
     font-style: normal;
     font-weight: 400;
     font-size: 24px;

@@ -54,6 +54,10 @@ export interface ILoginFormValues {
   password: string;
 }
 
+export interface IAdressFormValue {
+  endereco: string;
+}
+
 export interface IUserContext {
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;

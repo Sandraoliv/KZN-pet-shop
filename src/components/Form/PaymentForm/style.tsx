@@ -2,9 +2,7 @@ import styled from "styled-components";
 
 export const StyledFormPayment = styled.form`
   width: 90%;
-
   margin: 0 auto;
-
   background-color: #e8f6fd;
   display: flex;
   flex-direction: column;
@@ -12,9 +10,6 @@ export const StyledFormPayment = styled.form`
   border-radius: 20px;
 
   h3 {
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 400;
     font-size: 30px;
     line-height: 36px;
     text-align: center;
@@ -22,9 +17,6 @@ export const StyledFormPayment = styled.form`
   }
   label {
     color: #ff9b00;
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 400;
     font-size: 24px;
     line-height: 29px;
   }

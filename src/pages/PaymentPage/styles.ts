@@ -11,3 +11,7 @@ export const StyledPayment = styled.div`
 export const StyledSectionPayment = styled.div`
   height: 100%;
 `;
+
+export const StyledSpanFree = styled.p`
+  color: var(--color-secundary);
+`;
