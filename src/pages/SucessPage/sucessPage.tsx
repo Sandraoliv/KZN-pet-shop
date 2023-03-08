@@ -10,6 +10,7 @@ export function SucessPage() {
   return (
     <StyledSucessPage>
       <SuccessHeader />
+
       <div className="content-flex-desktop">
         <div className="container-mensage">
           <p>Compra finalizada com sucesso </p>
