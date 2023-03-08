@@ -5,8 +5,6 @@ import { CartContext } from "../../../provider/CartContext/CartContext";
 import { StyledProductCard } from "./stsyle";
 
 export function ProductCard(product: IProduct) {
-  //   rever
-
   const { productList, productsListCart, setProductsListCart } =
     useContext(CartContext);
 
@@ -24,12 +22,15 @@ export function ProductCard(product: IProduct) {
       if (product.id == sameProduct.id && aux == true) {
         const newProduct = [...productsListCart, product];
         setProductsListCart(newProduct);
+        localStorage.setItem("@ListCart", JSON.stringify(newProduct));
+
         toast.success(
           `Item ${product.name} adicionado ao carrinho com sucesso`
         );
       }
     });
   }
+
   return (
     <StyledProductCard>
       <div className="img__container">

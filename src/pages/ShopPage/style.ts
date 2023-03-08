@@ -84,6 +84,8 @@ export const StyledShop = styled.div`
     padding: 10px;
     border-radius: 30px;
     margin-bottom: 10px;
+    cursor: pointer;
+    z-index: 4;
   }
 
   .buttonArrow > p {
@@ -148,10 +150,9 @@ export const StyledShop = styled.div`
     flex-direction: column;
     align-items: center;
     background-color: white;
-    background-color: red;
     width: 95%;
     height: 100%;
-    padding: 10px;
+    padding: 10vw;
     padding-top: 150px;
   }
 
@@ -164,7 +165,7 @@ export const StyledShop = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 90%;
+    width: 100%;
     border-radius: 20px;
     padding: 16px;
 
@@ -278,8 +279,8 @@ export const StyledShop = styled.div`
     }
   }
 
-  @media (min-width: 1500px) {
-    main {
+  @media (min-width: 1200px) {
+    .category {
       align-items: center;
     }
   }
