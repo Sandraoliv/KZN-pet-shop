@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 export const StyledFormPayment = styled.form`
   width: 90%;
+
   margin: 0 auto;
+
   background-color: #e8f6fd;
   display: flex;
   flex-direction: column;
@@ -60,6 +62,7 @@ export const StyledFormPayment = styled.form`
     line-height: 36px;
     color: #ffffff;
     margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   @media (min-width: 800px) {
