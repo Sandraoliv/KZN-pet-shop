@@ -32,7 +32,7 @@ export const StyledHeader = styled.header`
   }
 
   .nav > svg {
-    color: var(--color-secundary);
+    color: var(--color-secondary);
   }
 
   /* vever */
@@ -73,13 +73,13 @@ export const StyledHeader = styled.header`
     text-align: center;
     padding: 5px 16px;
     border-radius: 5px;
-    background-color: var(--color-secundary);
+    background-color: var(--color-secondary);
     color: white;
     z-index: 10;
   }
 
   .login:hover {
-    background-color: var(--color-secundary-hover);
+    background-color: var(--color-secondary-hover);
   }
 
   .register {
@@ -87,7 +87,7 @@ export const StyledHeader = styled.header`
     text-align: center;
     padding: 5px 16px;
     border-radius: 5px;
-    color: var(--color-secundary);
+    color: var(--color-secondary);
   }
 
   /* .register:hover {
@@ -95,7 +95,7 @@ export const StyledHeader = styled.header`
   } */
 
   & > div > svg {
-    color: var(--color-secundary);
+    color: var(--color-secondary);
   }
 
   @media (min-width: 500px) {
