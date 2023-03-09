@@ -9,7 +9,7 @@ export const StyledHeader = styled.header`
         flex-direction: column;
         align-items: center;
         width: 100%;
-        padding: 8px 16px;
+        padding: 10px 70px;
         justify-content: space-between;
         background-color: var(--color-assistant);
       `;
@@ -19,7 +19,7 @@ export const StyledHeader = styled.header`
         flex-direction: column;
         align-items: center;
         width: 100%;
-        padding: 8px 16px;
+        padding: 10px 70px;
         justify-content: space-between;
         background-color: var(--color-tertiary-transparent);
       `;
@@ -97,7 +97,7 @@ export const StyledHeader = styled.header`
   }
 
   .login:hover {
-    background-color: var(--color-secondary-hover);
+    background-color: #f57c00;
   }
 
   .register {

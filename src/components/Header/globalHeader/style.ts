@@ -32,4 +32,8 @@ export const GblHeader = styled.header`
 
     color: #ffffff;
   }
+
+  a:hover {
+    background-color: #f57c00;
+  }
 `;
