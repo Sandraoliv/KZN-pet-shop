@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   IDefaultProviderProps,
   ILoginFormValues,
@@ -20,7 +20,7 @@ import { api } from "../../services/api";
 export const UserContext = createContext({} as IUserContext);
 
 export function UserProvider({ children }: IDefaultProviderProps) {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<IUser>();
@@ -31,7 +31,7 @@ export function UserProvider({ children }: IDefaultProviderProps) {
       setLoading(true);
       const response = await api.post<IresponseRegister>("/users", formData);
       toast.success("Usuario cadastrado com sucesso ");
-      // navigate("/login");
+      navigate("/login");
     } catch (error) {
       if (axios.isAxiosError<string>(error)) {
         if (error.response?.data == "Email already exists") {
@@ -52,7 +52,7 @@ export function UserProvider({ children }: IDefaultProviderProps) {
       localStorage.setItem("@token", response.data.accessToken);
 
       setUser(response.data.user);
-      // navigate("/shop");
+      navigate("/");
     } catch (error) {
       if (axios.isAxiosError<string>(error)) {
         if (error.response?.data == "Incorrect password") {
@@ -126,7 +126,7 @@ export function UserProvider({ children }: IDefaultProviderProps) {
 
   function logoutUser() {
     localStorage.removeItem("@token");
-    // navigate("/login");
+    navigate("/login");
   }
 
   return (

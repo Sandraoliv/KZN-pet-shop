@@ -6,8 +6,8 @@ import { ILoginFormValues } from "../../../provider/UserContext/@Types";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../../provider/UserContext/UserContext";
 import { StyledLoginForm } from "./styledLoginForm";
-import { Input } from "../Input";
 import { SubmitHandler } from "react-hook-form/dist/types/form";
+import { Input } from "../Input";
 
 export function LoginForm() {
   const navigate = useNavigate();
@@ -23,6 +23,8 @@ export function LoginForm() {
   //     return loginUser(formData);
   //   }
   const submit: SubmitHandler<ILoginFormValues> = (formData) => {
+    console.log(formData);
+
     loginUser(formData);
   };
 
@@ -35,14 +37,12 @@ export function LoginForm() {
       <Input
         label="Email"
         type="email"
-        placeholder="Digite o seu email"
         register={register("email")}
         error={errors.email}
       />
       <Input
         label="Senha"
         type="password"
-        placeholder="Digite uma senha"
         register={register("password")}
         error={errors.password}
       />
