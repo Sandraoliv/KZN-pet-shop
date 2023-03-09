@@ -5,7 +5,9 @@ export const StyledShop = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
+  max-width: 100vw;
   z-index: 1;
+  overflow: hidden;
 
   .banner {
     display: flex;
@@ -19,7 +21,7 @@ export const StyledShop = styled.div`
     position: relative;
   }
 
-  .blueBall {
+  /* .blueBall {
     position: absolute;
     width: 900px;
     height: 900px;
@@ -39,7 +41,7 @@ export const StyledShop = styled.div`
     bottom: 500px;
     right: -500px;
     z-index: -10;
-  }
+  } */
 
   .input {
     display: flex;
@@ -128,20 +130,29 @@ export const StyledShop = styled.div`
     display: none;
   }
 
+  .category {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .category > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   main {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: white;
-    width: 90%;
+    background-color: red;
+    width: 95%;
     height: 100%;
     padding: 10px;
     padding-top: 150px;
-  }
-
-  main > div {
-    width: 100%;
-    margin-top: 16px;
   }
 
   main h2 {
@@ -264,6 +275,12 @@ export const StyledShop = styled.div`
     }
     .img__container--desktop {
       right: 5vw;
+    }
+  }
+
+  @media (min-width: 1500px) {
+    main {
+      align-items: center;
     }
   }
 

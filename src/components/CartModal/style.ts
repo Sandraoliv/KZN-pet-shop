@@ -8,7 +8,7 @@ export const StyledCartModal = styled.div`
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(51, 51, 51, 0.5);
+  background: rgba(24, 168, 229, 0.3);
   z-index: 10;
 
   & > div {
@@ -20,7 +20,7 @@ export const StyledCartModal = styled.div`
     border-radius: 10px;
     width: 90%;
     max-width: 500px;
-    background-color: grey;
+    background-color: white;
   }
   .closeModal {
     cursor: pointer;
@@ -58,9 +58,10 @@ export const StyledCartModal = styled.div`
     font-weight: 100;
   }
 
-  .prices > button {
+  .prices > .payment {
     padding: 8px 16px;
     color: white;
+    text-align: center;
     width: 100%;
     margin-top: 15px;
     bottom: 20px;

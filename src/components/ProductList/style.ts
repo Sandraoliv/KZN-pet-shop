@@ -3,14 +3,10 @@ import styled from "styled-components";
 export const StyledProductList = styled.ul`
   display: flex;
   flex-direction: row;
-
-  align-items: flex-start;
-
+  background-color: white;
+  align-items: center;
   gap: 10px;
   margin-bottom: 20px;
-  width: 90%;
+  width: 100%;
   overflow: auto;
-  @media (min-width: 1500px) {
-    justify-content: center;
-  }
 `;

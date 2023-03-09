@@ -4,13 +4,14 @@ export interface IDefaultProviderProps {
 
 export interface IProduct {
   name: string;
-  category: "Brinqueros" | "Coleiras" | "Produtos para Pet";
+  category: "Brinquedo" | "Coleiras" | "Produtos para Pet";
   description: string;
   price: number;
   img: string;
   id: number;
 }
 export interface ICartContext {
+  loading: boolean;
   handleModal(): void;
   modal: boolean;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;

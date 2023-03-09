@@ -4,7 +4,6 @@ import { FiArrowRight } from "react-icons/fi";
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../provider/CartContext/CartContext";
 import { ProductList } from "../../components/ProductList/productList";
-import { IProduct } from "../../provider/CartContext/@Types";
 import cachorrinhoMobile from "../../assets/cachorroMobile.svg";
 import cachorrinho from "../../assets/cachorro-e-gato-3D.svg";
 
@@ -14,14 +13,14 @@ import instituicao3 from "../../assets/Instituicoes/gatopoleslogo_2.svg";
 import instituicao4 from "../../assets/Instituicoes/logo-laranja_edited_edited_edited_2.svg";
 import instituicao5 from "../../assets/Instituicoes/logotipo_2.svg";
 import instituicao6 from "../../assets/Instituicoes/mundodosgatosadocao_2.svg";
+import { IProduct } from "../../provider/CartContext/@Types";
 
 export function ShopPage() {
-  const { productList, setProductList, loadProductList } =
-    useContext(CartContext);
+  const { productList, loadProductList } = useContext(CartContext);
 
-  const [coleiras, setColeiras] = useState([]);
-  const [brinquedos, setBrinquedos] = useState([]);
-  const [acessorios, setAcessorios] = useState([]);
+  const [coleiras, setColeiras] = useState<IProduct[]>([]);
+  const [brinquedos, setBrinquedos] = useState<IProduct[]>([]);
+  const [acessorios, setAcessorios] = useState<IProduct[]>([]);
 
   useEffect(() => {
     loadProductList();
@@ -50,11 +49,12 @@ export function ShopPage() {
     <StyledShop>
       <Header />
 
-      <div className="blueBall"></div>
+      {/* <div className="blueBall"></div>
 
       <div className="greenBall"></div>
 
-      <div className="orangeBall"></div>
+      <div className="orangeBall"></div> */}
+
       <section className="banner">
         {/* decidir */}
         {/* <div className="input">
@@ -88,33 +88,20 @@ export function ShopPage() {
       </section>
 
       <main>
-        {/* <div className="tags">
-          <div>
-            <span>frete gratis para todo o Brasil</span>
-          </div>
-          <span>30% do faturamento da nossa loja é doada</span>
-        </div> */}
         <h2>SHOP</h2>
-        <div>
+        <div className="category">
           <h2>COLEIRAS</h2>
           {coleiras.length > 0 ? <ProductList productList={coleiras} /> : null}
         </div>
 
-        <div>
+        <div className="category">
           <h2>BRINQUEDOS</h2>
           {brinquedos.length > 0 ? (
             <ProductList productList={brinquedos} />
           ) : null}
         </div>
 
-        <div>
-          <h2>BRINQUEDOS</h2>
-          {brinquedos.length > 0 ? (
-            <ProductList productList={brinquedos} />
-          ) : null}
-        </div>
-
-        <div>
+        <div className="category">
           <h2>ACESSÓRIOS</h2>
           {acessorios.length > 0 ? (
             <ProductList productList={acessorios} />

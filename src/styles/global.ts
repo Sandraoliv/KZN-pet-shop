@@ -25,12 +25,12 @@ svg {
   :root {
 
     --color-primary: #fff2ea;
-    --color-secundary: #ff9b00;
+    --color-secondary: #ff9b00;
     --color-tertiary: #18a8e5;
     --color-assistant: #adce53;
     --color-tertiary-transparent:#e8f6fd;
     --color-secundary-hover : rgba(255, 185, 77);
-    /* 255, 185, 77 */
+
 
 
     --negative: #e60000;

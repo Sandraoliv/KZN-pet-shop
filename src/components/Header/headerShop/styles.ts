@@ -112,10 +112,9 @@ export const StyledHeader = styled.header`
     .navMenu {
       display: none;
     }
+
+    .navDown {
+      display: none;
+    }
   }
 `;
-/* ${({ menu, setMenu }) => {
-      if (menu) {
-        setMenu(false);
-      }
-    }} */

@@ -88,7 +88,7 @@ export function UserProvider({ children }: IDefaultProviderProps) {
   async function uptadeUser(formData: IUpdateUserFormValues, id: number) {
     try {
       setLoading(true);
-      const response = await api.post<IresponseUpdateUser>(
+      const response = await api.patch<IresponseUpdateUser>(
         `/users/"${id}`,
         formData,
         {
