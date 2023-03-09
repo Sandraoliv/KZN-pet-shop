@@ -14,6 +14,7 @@ export function CartProductCard({ product }: IProductProps) {
   function removeToCart(id: number, name: string) {
     const newCart = productsListCart.filter((product) => product.id != id);
     setProductsListCart(newCart);
+    localStorage.setItem("@ListCart", JSON.stringify(newCart));
     toast.success(`Produto ${name} removido com sucesso`);
   }
 

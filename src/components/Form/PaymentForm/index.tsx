@@ -32,7 +32,7 @@ export function PaymentForm() {
 
   function submit() {
     setProductsListCart([]);
-    navigate("/"); /* mudar para /sucess */
+    navigate("/sucess");
   }
 
   let totalValue = 0;
