@@ -1,30 +1,55 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+
 import { useNavigate } from "react-router-dom";
+import { StyledSpanFree } from "../../../pages/PaymentPage/styles";
 import { CartContext } from "../../../provider/CartContext/CartContext";
 import { InputPayment } from "./InputPayment";
 import { StyledFormPayment } from "./style";
+import { IAdressFormValue } from "../../../provider/UserContext/@Types";
+import { AdressFormSchema } from "./validations";
 
 export function PaymentForm() {
   const { productsListCart, setProductsListCart } = useContext(CartContext);
+  const [endereco, setEndereco] = useState("");
+  const [exibirFreteGratis, setExibirFreteGratis] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IAdressFormValue>({ resolver: yupResolver(AdressFormSchema) });
+  function handleEnderecoChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setEndereco(event.target.value);
+
+    if (event.target.value) {
+      setExibirFreteGratis(true);
+    } else {
+      setExibirFreteGratis(false);
+    }
+  }
   const navigate = useNavigate();
+
   function submit() {
     setProductsListCart([]);
-    navigate("/");
+    navigate("/"); /* mudar para /sucess */
   }
 
   let totalValue = 0;
 
   productsListCart.map((product) => (totalValue = totalValue + product.price));
-  console.log(productsListCart);
+
   return (
-    <StyledFormPayment>
+    <StyledFormPayment onSubmit={handleSubmit(submit)}>
       <h3>FINALIZAR COMPRA</h3>
       <InputPayment
         placeholder="Digite seu endereço..."
-        label="Endereço"
+        label="endereco"
         type="text"
+        onChange={handleEnderecoChange}
+        register={register("endereco")}
       />
-      {InputPayment.length > 0 ? <p>Frete Gratis</p> : null}
+      {exibirFreteGratis ? <StyledSpanFree>Frete Gratis</StyledSpanFree> : null}
       <label htmlFor="payment">Forma de pagamento:</label>
       <select id="payment" name="">
         <option value="pix">Pix</option>
@@ -40,7 +65,7 @@ export function PaymentForm() {
         <p>{(totalValue * 10) / 100}</p>
       </div>
       <div className="button-container">
-        <button onClick={() => submit()}>Finalizar compra</button>
+        <button type="submit">Finalizar compra</button>
       </div>
     </StyledFormPayment>
   );
