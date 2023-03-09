@@ -17,10 +17,10 @@ import { IProduct } from "../../provider/CartContext/@Types";
 
 export function ShopPage() {
   const { productList, loadProductList } = useContext(CartContext);
-
   const [coleiras, setColeiras] = useState<IProduct[]>([]);
   const [brinquedos, setBrinquedos] = useState<IProduct[]>([]);
   const [acessorios, setAcessorios] = useState<IProduct[]>([]);
+  let token = localStorage.getItem("@token");
 
   useEffect(() => {
     loadProductList();
@@ -49,11 +49,11 @@ export function ShopPage() {
     <StyledShop>
       <Header />
 
-      {/* <div className="blueBall"></div>
+      <div className="blueBall"></div>
 
       <div className="greenBall"></div>
 
-      <div className="orangeBall"></div> */}
+      <div className="orangeBall"></div>
 
       <section className="banner">
         {/* decidir */}
@@ -66,6 +66,8 @@ export function ShopPage() {
           <span>
             Venha conhecer e nos ajudar nessa causa que aquece o coração
           </span>
+
+          {/* quando clica a pagina quebra */}
           <a href="/#footer " className="buttonArrow">
             <p>Instituições beneficiadas</p>
             <div>
@@ -77,6 +79,7 @@ export function ShopPage() {
         <div className="img__container--desktop">
           <img src={cachorrinho} alt="" />
         </div>
+
         <div className="tags">
           <span>Frete gratis para todo o Brasil</span>
           <span>30% do faturamento da nossa loja é doado</span>
@@ -126,7 +129,7 @@ export function ShopPage() {
             pets
           </span>
 
-          <section>MAIS DE R$ 100.00,00 EM DOAÇÕES</section>
+          <section>MAIS DE R$ 100.000,000 EM DOAÇÕES</section>
         </footer>
       </main>
     </StyledShop>

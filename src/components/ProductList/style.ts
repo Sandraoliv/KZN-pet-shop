@@ -8,5 +8,4 @@ export const StyledProductList = styled.ul`
   gap: 10px;
   margin-bottom: 20px;
   width: 100%;
-  overflow: auto;
 `;

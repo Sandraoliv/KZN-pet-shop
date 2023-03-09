@@ -12,7 +12,6 @@ export const StyledProductCard = styled.li`
   max-width: 200px;
   min-height: 280px;
   margin-top: 15px;
-  /* background-color: var(--grey-100); */
 
   .img__container {
     display: flex;
@@ -20,6 +19,8 @@ export const StyledProductCard = styled.li`
     align-items: center;
     justify-content: center;
     border-radius: 10px;
+    height: 100px;
+    width: 100px;
   }
 
   h3 {
@@ -68,7 +69,7 @@ export const StyledProductCard = styled.li`
       padding: 8px;
       color: white;
       border-radius: 10px;
-      background-color: var(--color-secundary);
+      background-color: var(--color-secondary);
     }
   }
 
@@ -90,6 +91,6 @@ export const StyledProductCard = styled.li`
     width: 90%;
     bottom: 20px;
     border-radius: 10px;
-    background-color: var(--color-secundary);
+    background-color: var(--color-secondary);
   }
 `;
