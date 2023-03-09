@@ -61,6 +61,7 @@ export interface IAdressFormValue {
 export interface IUserContext {
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  user: IUser | undefined;
   registerUser: (formData: IRegisterFormValues) => Promise<void>;
   loginUser: (formData: ILoginFormValues) => Promise<void>;
   logoutUser: () => void;

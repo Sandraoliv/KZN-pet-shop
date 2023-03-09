@@ -21,16 +21,20 @@ export const UserContext = createContext({} as IUserContext);
 
 export function UserProvider({ children }: IDefaultProviderProps) {
   const navigate = useNavigate();
+  const localStorageUser = localStorage.getItem("@user");
 
   const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState<IUser>();
+  const [user, setUser] = useState<IUser>(
+    localStorageUser ? JSON.parse(localStorageUser) : {}
+  );
+
   let token = localStorage.getItem("@token");
 
   async function registerUser(formData: IRegisterFormValues) {
     try {
       setLoading(true);
       const response = await api.post<IresponseRegister>("/users", formData);
-      toast.success("Usuario cadastrado com sucesso ");
+      toast.success(`Usuario ${formData.name} cadastrado com sucesso `);
       navigate("/login");
     } catch (error) {
       if (axios.isAxiosError<string>(error)) {
@@ -50,7 +54,9 @@ export function UserProvider({ children }: IDefaultProviderProps) {
       setLoading(true);
       const response = await api.post<IresponseLogin>("/login", formData);
       localStorage.setItem("@token", response.data.accessToken);
-
+      // rever
+      localStorage.setItem("@user", JSON.stringify(response.data.user));
+      toast.success(`Bem vindo de volta ${response.data.user.name}`);
       setUser(response.data.user);
       navigate("/");
     } catch (error) {
@@ -125,7 +131,9 @@ export function UserProvider({ children }: IDefaultProviderProps) {
   }
 
   function logoutUser() {
+    toast.success(`Até logo ${user?.name}!! `);
     localStorage.removeItem("@token");
+    localStorage.removeItem("@user");
     navigate("/login");
   }
 
@@ -137,6 +145,7 @@ export function UserProvider({ children }: IDefaultProviderProps) {
         registerUser,
         loginUser,
         logoutUser,
+        user,
         getUser,
         uptadeUser,
         deleteUser,

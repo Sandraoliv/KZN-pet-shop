@@ -1,13 +1,30 @@
-import styled, { css } from "styled-components";
+import styled, { css, token } from "styled-components";
 
 export const StyledHeader = styled.header`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding: 8px 16px;
-  justify-content: space-between;
-  background-color: var(--color-tertiary-transparent);
+  /* rever */
+  ${({ token }) => {
+    if (token) {
+      return css`
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 8px 16px;
+        justify-content: space-between;
+        background-color: var(--color-assistant);
+      `;
+    } else {
+      return css`
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 8px 16px;
+        justify-content: space-between;
+        background-color: var(--color-tertiary-transparent);
+      `;
+    }
+  }}
 
   .navUp {
     display: flex;
@@ -40,10 +57,11 @@ export const StyledHeader = styled.header`
     if (menu) {
       return css`
         .navDown {
+          margin-top: 10px;
           display: flex;
           flex-direction: row;
           align-items: center;
-          justify-content: space-between;
+          justify-content: space-around;
           gap: 10px;
           width: 100%;
         }

@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import patinahas from "../../assets/patinhas.svg";
+import patinahasUser from "../../assets/backgroungBannerUser.svg";
 
 export const StyledShop = styled.div`
   display: flex;
@@ -6,6 +8,7 @@ export const StyledShop = styled.div`
   align-items: center;
   position: relative;
   max-width: 100vw;
+
   z-index: 1;
   overflow: hidden;
 
@@ -13,21 +16,21 @@ export const StyledShop = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-
     width: 100%;
-    background-color: var(--color-tertiary-transparent);
+    background-image: url(${patinahas});
+    background-size: cover;
     padding: 16px 5vw;
     padding-bottom: 150px;
     position: relative;
   }
 
-  /* .blueBall {
+  .blueBall {
     position: absolute;
     width: 900px;
     height: 900px;
     border-radius: 50%;
-    background-color: #0091cc;
-    bottom: -500px;
+    background-color: var(--color-tertiary);
+    bottom: -400px;
     left: -400px;
     z-index: -10;
   }
@@ -41,7 +44,18 @@ export const StyledShop = styled.div`
     bottom: 500px;
     right: -500px;
     z-index: -10;
-  } */
+  }
+
+  .greenBall {
+    position: absolute;
+    width: 900px;
+    height: 900px;
+    border-radius: 50%;
+    background-color: var(--color-assistant);
+    top: 200px;
+    left: -700px;
+    z-index: -10;
+  }
 
   .input {
     display: flex;
@@ -66,7 +80,7 @@ export const StyledShop = styled.div`
   .paragraph > p {
     text-align: left;
     font-size: 2rem;
-    color: #0091cc;
+    color: var(--color-tertiary);
     margin-bottom: 10px;
   }
 
@@ -80,8 +94,9 @@ export const StyledShop = styled.div`
     flex-direction: row;
     align-items: center;
     gap: 10px;
-    background-color: var(--color-secundary);
+    background-color: var(--color-secondary);
     padding: 10px;
+    margin-top: 10px;
     border-radius: 30px;
     margin-bottom: 10px;
     cursor: pointer;
@@ -97,7 +112,7 @@ export const StyledShop = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #0091cc;
+    background-color: var(--color-tertiary);
     border-radius: 20px;
     padding: 5px 10px;
   }
@@ -137,6 +152,7 @@ export const StyledShop = styled.div`
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
+    overflow: auto;
   }
 
   .category > div {
@@ -151,6 +167,7 @@ export const StyledShop = styled.div`
     align-items: center;
     background-color: white;
     width: 95%;
+    gap: 20px;
     height: 100%;
     padding: 10vw;
     padding-top: 150px;
@@ -205,7 +222,7 @@ export const StyledShop = styled.div`
     margin-top: 10px;
     text-align: center;
     border-radius: 15px;
-    background-color: #0091cc;
+    background-color: var(--color-tertiary);
   }
 
   @media (min-width: 600px) {

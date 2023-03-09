@@ -5,12 +5,16 @@ import { StyledHeader } from "./styles";
 import { useContext, useState } from "react";
 import { ModalCart } from "../../CartModal/cartModal";
 import { CartContext } from "../../../provider/CartContext/CartContext";
-
+import { RxExit } from "react-icons/rx";
 import logo from "../../../assets/logo.svg";
+import { UserContext } from "../../../provider/UserContext/UserContext";
 
 export function Header() {
   const [menu, setMenu] = useState(false);
   const { modal, setModal } = useContext(CartContext);
+  const { logoutUser, user } = useContext(UserContext);
+  let token = localStorage.getItem("@token");
+  console.log(user);
 
   function menuHamburguer() {
     setMenu(!menu);
@@ -18,14 +22,49 @@ export function Header() {
 
   return (
     // rever
-    <StyledHeader menu={menu}>
+    <StyledHeader menu={menu} token={token}>
       <div className="navUp">
         <div className="logo">
-          {/* rever */}
-
           <img src={logo} alt="" />
         </div>
-        <div className="nav">
+
+        {token ? (
+          <div className="nav">
+            <h2>Olá {user?.name}! </h2>
+
+            <RxExit onClick={() => logoutUser()} />
+            <HiShoppingCart onClick={() => setModal(!modal)} />
+          </div>
+        ) : (
+          <div className="nav">
+            <Link className="login" to="/login">
+              {" "}
+              Login{" "}
+            </Link>
+
+            <Link className="register" to="/register">
+              {" "}
+              Cadastro{" "}
+            </Link>
+
+            <HiShoppingCart onClick={() => setModal(!modal)} />
+          </div>
+        )}
+
+        <div className="navMenu">
+          <GrMenu onClick={() => menuHamburguer()} />
+        </div>
+      </div>
+
+      {token ? (
+        <div className="navDown">
+          <h2>Usuario logado </h2>
+
+          <HiShoppingCart onClick={() => setModal(!modal)} />
+          <RxExit onClick={() => logoutUser()} />
+        </div>
+      ) : (
+        <div className="navDown">
           <Link className="login" to="/login">
             {" "}
             Login{" "}
@@ -38,24 +77,7 @@ export function Header() {
 
           <HiShoppingCart onClick={() => setModal(!modal)} />
         </div>
-        <div className="navMenu">
-          <GrMenu onClick={() => menuHamburguer()} />
-        </div>
-      </div>
-
-      <div className="navDown">
-        <Link className="login" to="/login">
-          {" "}
-          Login{" "}
-        </Link>
-
-        <Link className="register" to="/register">
-          {" "}
-          Cadastro{" "}
-        </Link>
-
-        <HiShoppingCart onClick={() => setModal(!modal)} />
-      </div>
+      )}
 
       {modal ? <ModalCart /> : null}
     </StyledHeader>
