@@ -27,7 +27,7 @@ export const GblHeader = styled.header`
 
     padding: 5px 30px;
 
-    background: var(--color-secundary);
+    background: var(--color-secondary);
     border-radius: 10px;
 
     color: #ffffff;

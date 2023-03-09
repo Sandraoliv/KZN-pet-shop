@@ -1,24 +1,21 @@
 import { FieldError, UseFormRegisterReturn } from "react-hook-form";
-import { StyledFieldset } from "./style";
+import TextField from "@mui/material/TextField";
 
 interface IInput {
-  placeholder: string;
   type: string;
   register: UseFormRegisterReturn<string>;
-  error?: FieldError;
+  error?: FieldError | undefined;
   label: string;
 }
 
-export const Input = ({
-  placeholder,
-  label,
-  type,
-  register,
-  error,
-}: IInput) => (
-  <StyledFieldset>
-    <label htmlFor={label}>{label}</label>
-    <input id={label} placeholder={placeholder} type={type} {...register} />
-    <div>{error ? <p className="errors">{error.message}</p> : null}</div>
-  </StyledFieldset>
+export const Input = ({ label, type, register, error }: IInput) => (
+  <TextField
+    id="outlined-basic"
+    variant="outlined"
+    label={label}
+    type={type}
+    helperText={error?.message}
+    color="warning"
+    {...register}
+  ></TextField>
 );
