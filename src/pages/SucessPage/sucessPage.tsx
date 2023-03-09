@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 export function SucessPage() {
   const navigate = useNavigate();
 
-  console.log("ola");
   return (
     <StyledSucessPage>
       <SuccessHeader />
