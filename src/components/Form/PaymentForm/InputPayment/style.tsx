@@ -7,20 +7,12 @@ export const StyledFieldsetPayment = styled.div`
   margin: 0 auto;
   gap: 8px;
 
-  label {
-    color: #ff9b00;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 29px;
-  }
-
-  input {
+  /* input {
     width: 100%;
     outline: none;
     height: 50px;
     border-radius: 12px;
     padding: 0 8px;
     margin-bottom: 2rem;
-  }
+  } */
 `;

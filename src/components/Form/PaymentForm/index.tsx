@@ -9,6 +9,10 @@ import { InputPayment } from "./InputPayment";
 import { StyledFormPayment } from "./style";
 import { IAdressFormValue } from "../../../provider/UserContext/@Types";
 import { AdressFormSchema } from "./validations";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import FormControl from "@mui/material/FormControl";
 
 export function PaymentForm() {
   const { productsListCart, setProductsListCart } = useContext(CartContext);
@@ -19,20 +23,13 @@ export function PaymentForm() {
     handleSubmit,
     formState: { errors },
   } = useForm<IAdressFormValue>({ resolver: yupResolver(AdressFormSchema) });
-  function handleEnderecoChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setEndereco(event.target.value);
 
-    if (event.target.value) {
-      setExibirFreteGratis(true);
-    } else {
-      setExibirFreteGratis(false);
-    }
-  }
   const navigate = useNavigate();
 
   function submit() {
     setProductsListCart([]);
     navigate("/sucess");
+    localStorage.removeItem("@ListCart");
   }
 
   let totalValue = 0;
@@ -43,26 +40,35 @@ export function PaymentForm() {
     <StyledFormPayment onSubmit={handleSubmit(submit)}>
       <h3>FINALIZAR COMPRA</h3>
       <InputPayment
-        placeholder="Digite seu endereço..."
         label="endereco"
         type="text"
-        onChange={handleEnderecoChange}
         register={register("endereco")}
+        error={errors.endereco}
       />
-      {exibirFreteGratis ? <StyledSpanFree>Frete Gratis</StyledSpanFree> : null}
-      <label htmlFor="payment">Forma de pagamento:</label>
-      <select id="payment" name="">
-        <option value="pix">Pix</option>
-        <option value="credito">Cartão Credito</option>
-        <option value="debito">Cartão Debito</option>
-      </select>
+      <div className="select-container">
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label" color="warning">
+            Age
+          </InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            label="Age"
+            color="warning"
+          >
+            <MenuItem value="Pix">Pix</MenuItem>
+            <MenuItem value="Cartão Credito">Cartão Credito</MenuItem>
+            <MenuItem value="Cartão Debito">Cartão Debito</MenuItem>
+          </Select>
+        </FormControl>
+      </div>
       <div className="Text-Total">
         <p>TOTAL:</p>
-        <p>{totalValue}</p>
+        <p>R$ {totalValue}</p>
       </div>
       <div className="Text-Total">
         <p>TOTAL DOADO:</p>
-        <p>{(totalValue * 10) / 100}</p>
+        <p>R$ {(totalValue * 30) / 100}</p>
       </div>
       <div className="button-container">
         <button type="submit">Finalizar compra</button>
