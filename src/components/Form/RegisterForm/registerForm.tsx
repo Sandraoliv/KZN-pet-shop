@@ -8,6 +8,7 @@ import { GlobalHeader } from "../../Header/globalHeader/globalHeader";
 import imgFormRegister from "../../../assets/imgFormRegister.svg";
 import { MainFormRegister, SectionFormRegister } from "./style";
 import { TextField } from "@material-ui/core";
+import { Input } from "../Input";
 
 export function RegisterForm() {
   const { registerUser } = useContext(UserContext);
@@ -31,42 +32,34 @@ export function RegisterForm() {
       <MainFormRegister>
         <img src={imgFormRegister} alt="" />
         <form>
-          <div></div>
-          <h3>Cadastre-se</h3>
-
-          <TextField
-            id="outlined-password-input"
-            label="Digite seu nome aqui"
+          <section>
+            <div></div>
+            <h3>Cadastre-se</h3>
+          </section>
+          <Input
+            label="Nome"
             type="text"
-            autoComplete="current-password"
+            register={register("name")}
+            error={errors.name}
           />
-          <input
-            placeholder="Digite seu nome aqui"
-            {...register("name")}
+          <Input
+            label="Email"
             type="text"
+            register={register("email")}
+            error={errors.email}
           />
-          <span>{errors.name?.message}</span>
-
-          <input
-            placeholder="Digite seu email aqui"
-            {...register("email")}
-            type="email"
-          />
-          <span>{errors.email?.message}</span>
-
-          <input
-            placeholder="Digite seu email aqui"
-            {...register("password")}
+          <Input
+            label="Senha"
             type="password"
+            register={register("password")}
+            error={errors.password}
           />
-          <span>{errors.password?.message}</span>
-
-          <input
-            placeholder="Digite seu email aqui"
-            {...register("confirmPassword")}
-            type="confirmPassword"
+          <Input
+            label="Confirmar senha"
+            type="password"
+            register={register("confirmPassword")}
+            error={errors.confirmPassword}
           />
-          <span>{errors.confirmPassword?.message}</span>
         </form>
       </MainFormRegister>
     </SectionFormRegister>
