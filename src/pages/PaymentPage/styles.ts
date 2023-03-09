@@ -13,5 +13,5 @@ export const StyledSectionPayment = styled.div`
 `;
 
 export const StyledSpanFree = styled.p`
-  color: var(--color-secundary);
+  color: var(--color-secondary);
 `;

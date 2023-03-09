@@ -15,16 +15,18 @@ export const StyledFormPayment = styled.form`
     text-align: center;
     margin-bottom: 50px;
   }
-  label {
-    color: #ff9b00;
-    font-size: 24px;
-    line-height: 29px;
+  .select-container {
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    flex-direction: column;
+    gap: 8px;
   }
-
-  input,
   select {
     height: 50px;
-    border-radius: 12px;
+    background-color: transparent;
+    border: 0.6px solid #adaaaa;
+    border-radius: 8px;
     padding: 0 8px;
     margin-bottom: 2rem;
   }

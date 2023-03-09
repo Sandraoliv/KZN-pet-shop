@@ -1,31 +1,23 @@
-import { UseFormRegisterReturn } from "react-hook-form";
-import { StyledFieldsetPayment } from "./style";
+import { FieldError, UseFormRegisterReturn } from "react-hook-form";
+import TextField from "@mui/material/TextField";
 
 interface IInput {
-  placeholder: string;
   type: string;
   label: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  error?: FieldError | undefined;
   register: UseFormRegisterReturn<string>;
 }
 
-export function InputPayment({
-  placeholder,
-  type,
-  label,
-  register,
-  onChange,
-}: IInput) {
+export function InputPayment({ label, type, register, error }: IInput) {
   return (
-    <StyledFieldsetPayment>
-      <label htmlFor={label}>{label}</label>
-      <input
-        id={label}
-        type={type}
-        placeholder={placeholder}
-        {...register}
-        onChange={onChange}
-      />
-    </StyledFieldsetPayment>
+    <TextField
+      id="outlined-basic"
+      variant="outlined"
+      label={label}
+      type={type}
+      helperText="Frete Gratis"
+      color="warning"
+      {...register}
+    ></TextField>
   );
 }
