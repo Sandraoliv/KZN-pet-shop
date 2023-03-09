@@ -6,7 +6,7 @@ import { useContext, useState } from "react";
 import { ModalCart } from "../../CartModal/cartModal";
 import { CartContext } from "../../../provider/CartContext/CartContext";
 import { RxExit } from "react-icons/rx";
-import logo from "../../../assets/logo.svg";
+import logo from "../../../assets/KNZLOGO.svg";
 import { UserContext } from "../../../provider/UserContext/UserContext";
 
 export function Header() {
@@ -14,7 +14,6 @@ export function Header() {
   const { modal, setModal } = useContext(CartContext);
   const { logoutUser, user } = useContext(UserContext);
   let token = localStorage.getItem("@token");
-  console.log(user);
 
   function menuHamburguer() {
     setMenu(!menu);
