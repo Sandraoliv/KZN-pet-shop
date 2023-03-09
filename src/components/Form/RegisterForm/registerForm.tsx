@@ -7,8 +7,19 @@ import { IRegisterFormValues } from "../../../provider/UserContext/@Types";
 import { GlobalHeader } from "../../Header/globalHeader/globalHeader";
 import imgFormRegister from "../../../assets/imgFormRegister.svg";
 import { MainFormRegister, SectionFormRegister } from "./style";
-import { TextField } from "@material-ui/core";
 import { Input } from "../Input";
+import Button, { ButtonProps } from "@mui/material/Button";
+
+import { styled } from "@mui/material/styles";
+import { orange, purple } from "@mui/material/colors";
+
+const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
+  color: theme.palette.getContrastText(purple[300]),
+  backgroundColor: orange[500],
+  "&:hover": {
+    backgroundColor: orange[700],
+  },
+}));
 
 export function RegisterForm() {
   const { registerUser } = useContext(UserContext);
@@ -23,6 +34,7 @@ export function RegisterForm() {
   });
 
   const submit: SubmitHandler<IRegisterFormValues> = (formdata) => {
+    console.log(formdata);
     registerUser(formdata);
   };
 
@@ -31,8 +43,8 @@ export function RegisterForm() {
       <GlobalHeader />
       <MainFormRegister>
         <img src={imgFormRegister} alt="" />
-        <form>
-          <section>
+        <form onSubmit={handleSubmit(submit)}>
+          <section className='titleForm'>
             <div></div>
             <h3>Cadastre-se</h3>
           </section>
@@ -44,7 +56,7 @@ export function RegisterForm() {
           />
           <Input
             label="Email"
-            type="text"
+            type="email"
             register={register("email")}
             error={errors.email}
           />
@@ -60,6 +72,10 @@ export function RegisterForm() {
             register={register("confirmPassword")}
             error={errors.confirmPassword}
           />
+
+          <ColorButton type="submit" variant="contained">
+            Cadastrar
+          </ColorButton>
         </form>
       </MainFormRegister>
     </SectionFormRegister>

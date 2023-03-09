@@ -51,5 +51,10 @@ export const MainFormRegister = styled.main`
     height: max-content;
 
     background-color: var(--color-tertiary-transparent);
+
+    .titleForm {
+      display: flex;
+      gap: 5px;
+    }
   }
 `;
