@@ -3,10 +3,11 @@ import { CartContext } from "../../provider/CartContext/CartContext";
 import { CartProductList } from "./CartProductList/cartProductList";
 import { StyledCartModal } from "./style";
 import cachorrinhoModal from "../../assets/cachorro_Background_Removed_1.svg";
+import { Link } from "react-router-dom";
 
 export function ModalCart() {
   const { modal, setModal } = useContext(CartContext);
-  const { productsListCart, setProductsListCart } = useContext(CartContext);
+  const { productsListCart } = useContext(CartContext);
 
   let totalValue = 0;
 
@@ -37,7 +38,10 @@ export function ModalCart() {
                 </span>
               </div>
 
-              <button type="button">Continuar</button>
+              <Link className="payment" to="/payment">
+                {" "}
+                Continuar{" "}
+              </Link>
             </div>
           </>
         ) : (
