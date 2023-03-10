@@ -6,6 +6,7 @@ export function UserPage() {
   return (
     <SectionUserPage>
       <SuccessHeader />
+      <h1>Userpage</h1>
     </SectionUserPage>
   );
 }
