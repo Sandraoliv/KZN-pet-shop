@@ -26,7 +26,7 @@ export const StyledLoginPage = styled.main`
   }
   .containerDesktop {
     width: 649px;
-    height: 566px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,8 +34,8 @@ export const StyledLoginPage = styled.main`
     z-index: 4;
   }
   .imgDesktop {
-    width: 581px;
-    height: 410px;
+    width: 100%;
+    height: 100%;
   }
   .arrowContainer {
     display: flex;
@@ -57,7 +57,7 @@ export const StyledLoginPage = styled.main`
     flex-direction: column;
     align-items: center;
     width: 90%;
-    height: 780px;
+    height: 100vh;
     align-items: flex-end;
     justify-content: center;
   }
@@ -78,6 +78,11 @@ export const StyledLoginPage = styled.main`
   }
 
   @media (min-width: 769px) {
+    .imageText {
+      text-align: start;
+      font-size: 2.5rem;
+    }
+
     .StyledLoginPage {
       display: flex;
       justify-content: center;
