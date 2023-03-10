@@ -56,5 +56,25 @@ export const MainFormRegister = styled.main`
       display: flex;
       gap: 5px;
     }
+
+    p {
+      color: var(--color-secondary);
+    }
+
+    input {
+      background-color: var(--grey-0);
+      color: var(--color-secondary);
+    }
+
+    button {
+      color: white;
+      background-color: var(--color-secondary);
+      box-shadow: none;
+    }
+
+    button:hover {
+      background-color: #f57c00;
+      box-shadow: none;
+    }
   }
 `;
