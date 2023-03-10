@@ -31,13 +31,13 @@ export const MainFormRegister = styled.main`
     font-weight: 400;
     font-size: 40px;
     line-height: 48px;
+    text-align: center;
 
     color: var(--color-secondary);
   }
 
   img {
-    max-width: 40%;
-    height: auto;
+    display: none;
   }
 
   form {
@@ -75,6 +75,15 @@ export const MainFormRegister = styled.main`
     button:hover {
       background-color: #f57c00;
       box-shadow: none;
+    }
+  }
+
+  @media (min-width: 620px) {
+    img {
+      display: block;
+
+      max-width: 40%;
+      height: auto;
     }
   }
 `;
