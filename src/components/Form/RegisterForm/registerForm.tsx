@@ -9,7 +9,7 @@ import imgFormRegister from "../../../assets/imgFormRegister.svg";
 import { MainFormRegister, SectionFormRegister } from "./style";
 import { Input } from "../Input";
 import Button from "@mui/material/Button";
-import { BackgroundDesk } from '../../Background/backgroundDesk';
+import { BackgroundPages } from "../../Background/BackgroundPages/backgroundPages";
 
 export function RegisterForm() {
   const { registerUser } = useContext(UserContext);
@@ -30,7 +30,7 @@ export function RegisterForm() {
   return (
     <SectionFormRegister>
       <GlobalHeader />
-      <BackgroundDesk/>
+      <BackgroundPages />
       <MainFormRegister>
         <img src={imgFormRegister} alt="" />
         <form onSubmit={handleSubmit(submit)}>
