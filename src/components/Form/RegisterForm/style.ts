@@ -61,15 +61,23 @@ export const MainFormRegister = styled.main`
       color: var(--color-secondary);
     }
 
+    label {
+      font-family: "Tilt Neon";
+    }
+
     input {
       background-color: var(--grey-0);
       color: var(--color-secondary);
+
+      font-family: "Tilt Neon";
     }
 
     button {
       color: white;
       background-color: var(--color-secondary);
       box-shadow: none;
+
+      font-family: "Tilt Neon";
     }
 
     button:hover {
