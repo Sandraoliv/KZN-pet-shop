@@ -5,8 +5,8 @@ import { UserContext } from "../../provider/UserContext/UserContext";
 import block from "../../assets/Rectangle 33.svg";
 import animals from "../../assets/animais-domesticos-1024x654 1.svg";
 import arrow from "../../assets/Frame 106.svg";
-
 import { GlobalHeader } from "../../components/Header/globalHeader/globalHeader";
+import { BackgroundPages } from "../../components/Background/BackgroundPages/backgroundPages";
 
 export function LoginPage() {
   const { loginUser } = useContext(UserContext);
@@ -14,6 +14,7 @@ export function LoginPage() {
   return (
     <>
       <GlobalHeader />
+      <BackgroundPages />
       <StyledLoginPage>
         <div className="mainContainer">
           <div className="containerDesktop">
