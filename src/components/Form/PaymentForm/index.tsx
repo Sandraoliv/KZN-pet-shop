@@ -13,6 +13,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
+import Button from "@mui/material/Button";
 
 export function PaymentForm() {
   const { productsListCart, setProductsListCart } = useContext(CartContext);
@@ -48,12 +49,12 @@ export function PaymentForm() {
       <div className="select-container">
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label" color="warning">
-            Age
+            Forma de Pagamento
           </InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            label="Age"
+            label="Forma de Pagamento"
             color="warning"
           >
             <MenuItem value="Pix">Pix</MenuItem>
@@ -63,15 +64,27 @@ export function PaymentForm() {
         </FormControl>
       </div>
       <div className="Text-Total">
-        <p>TOTAL:</p>
-        <p>R$ {totalValue}</p>
+        <span>TOTAL:</span>
+        <span>
+          {totalValue.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          })}
+        </span>
       </div>
       <div className="Text-Total">
-        <p>TOTAL DOADO:</p>
-        <p>R$ {(totalValue * 30) / 100}</p>
+        <span>TOTAL DOADO:</span>
+        <span>
+          {((totalValue * 30) / 100).toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          })}
+        </span>
       </div>
       <div className="button-container">
-        <button type="submit">Finalizar compra</button>
+        <Button type="submit" variant="contained">
+          Finalizar compra
+        </Button>
       </div>
     </StyledFormPayment>
   );
