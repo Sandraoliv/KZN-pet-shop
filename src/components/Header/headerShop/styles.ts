@@ -87,33 +87,90 @@ export const StyledHeader = styled.header`
   }
 
   .login {
-    text-decoration: none;
-    text-align: center;
-    padding: 5px 16px;
-    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     background-color: var(--color-secondary);
+    box-shadow: none;
+
+    padding: 0;
+
+    width: max-content;
+    height: 35px;
+
+    font-family: "Tilt Neon";
+
+    border-radius: 10px;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
     color: white;
-    z-index: 10;
   }
 
   .login:hover {
     background-color: #f57c00;
+    box-shadow: none;
   }
 
   .register {
-    text-decoration: none;
-    text-align: center;
-    padding: 5px 16px;
-    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: inherit;
+
+    width: max-content;
+    height: 35px;
+
+    font-family: "Tilt Neon";
+
+    border-radius: 10px;
+  }
+
+  .register:hover {
+    background-color: inherit;
+  }
+
+  .registerLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
     color: var(--color-secondary);
   }
 
-  /* .register:hover {
-    background-color: green;
-  } */
+  .registerLink:hover {
+    color: #f57c00;
+  }
 
-  & > div > svg {
+  .cart {
     color: var(--color-secondary);
+  }
+
+  .cart:hover {
+    color: #f57c00;
+  }
+
+  .menuIcon {
+    color: var(--color-secondary);
+
+    width: 30px;
+    height: 30px;
+  }
+
+  .menuIcon:hover {
+    color: #f57c00;
   }
 
   @media (min-width: 500px) {
