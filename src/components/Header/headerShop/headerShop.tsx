@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { StyledHeader } from "./styles";
 import { useContext, useState } from "react";
 import { ModalCart } from "../../CartModal/cartModal";
-import { CartContext } from "../../../provider/CartContext/CartContext";
+import { shopContext } from "../../../provider/ShopContext/ShopContext";
 import { RxExit } from "react-icons/rx";
 import logo from "../../../assets/KNZLOGO.svg";
 import { UserContext } from "../../../provider/UserContext/UserContext";
@@ -15,8 +15,9 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 export function Header() {
   const [menu, setMenu] = useState(false);
-  const { modal, setModal } = useContext(CartContext);
+  const { modal, setModal } = useContext(shopContext);
   const { logoutUser, user } = useContext(UserContext);
+
   let token = localStorage.getItem("@token");
 
   function menuHamburguer() {
@@ -26,8 +27,7 @@ export function Header() {
   const navigate = useNavigate();
 
   return (
-    // rever
-    <StyledHeader menu={menu} token={token}>
+    <StyledHeader menu={menu}>
       <div className="navUp">
         <div className="logo">
           <img src={logo} alt="" />

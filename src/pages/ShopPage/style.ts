@@ -1,6 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import patinahas from "../../assets/patinhas.svg";
 import patinahasUser from "../../assets/backgroungBannerUser.svg";
+
+interface ITokenState {
+  token: boolean;
+}
 
 export const StyledShop = styled.div`
   display: flex;
@@ -8,21 +12,101 @@ export const StyledShop = styled.div`
   align-items: center;
   position: relative;
   max-width: 100vw;
-
   z-index: 1;
   overflow: hidden;
 
-  .banner {
+  .loading {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 10px 0;
     width: 100%;
-    background-image: url(${patinahas});
-    background-size: cover;
-    padding: 16px 5vw;
-    padding-bottom: 150px;
-    position: relative;
   }
+
+  .loading > p {
+    border-radius: 10px;
+    background-color: var(--color-assistant);
+    padding: 20px 0;
+    font-size: 1.5rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 200px;
+    z-index: 11;
+    border-radius: 20px;
+    gap: 10px;
+    width: 50%;
+    max-width: 500px;
+    padding: 32px;
+    background-color: var(--color-tertiary-transparent);
+  }
+
+  form > h2 {
+    font-weight: 100;
+    color: var(--color-secondary);
+  }
+
+  form > .modalHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  form > div {
+    width: 100%;
+  }
+
+  form > div > span {
+    cursor: pointer;
+  }
+
+  form > input {
+    width: 100%;
+  }
+
+  form > button {
+    width: 100%;
+  }
+
+  ${({ token }: ITokenState) => {
+    if (token) {
+      return css`
+        .banner {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          background-image: url(${patinahasUser});
+          background-size: cover;
+          padding: 16px 5vw;
+          padding-bottom: 150px;
+          position: relative;
+        }
+      `;
+    } else {
+      return css`
+        .banner {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          background-image: url(${patinahas});
+          background-size: cover;
+          padding: 16px 5vw;
+          padding-bottom: 150px;
+          position: relative;
+        }
+      `;
+    }
+  }}
 
   .blueBall {
     position: absolute;
@@ -147,18 +231,20 @@ export const StyledShop = styled.div`
     display: none;
   }
 
+  .ShopTittle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+  }
+
   .category {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 100%;
     overflow: auto;
-  }
-
-  .category > div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    min-width: 200px;
+    width: 100%;
   }
 
   main {
@@ -200,6 +286,26 @@ export const StyledShop = styled.div`
     gap: 15px;
   }
 
+  .companyes > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .companyes > div > div {
+    border-radius: 10px;
+  }
+
+  footer img {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 10px;
+  }
+
   footer > p {
     width: 100%;
     text-align: center;
@@ -223,6 +329,15 @@ export const StyledShop = styled.div`
     text-align: center;
     border-radius: 15px;
     background-color: var(--color-tertiary);
+  }
+
+  .AdminFunction {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-secondary);
+    width: 100%;
   }
 
   @media (min-width: 600px) {
@@ -296,9 +411,9 @@ export const StyledShop = styled.div`
     }
   }
 
-  @media (min-width: 1200px) {
+  @media (max-width: 1200px) {
     .category {
-      align-items: center;
+      width: 100%;
     }
   }
 

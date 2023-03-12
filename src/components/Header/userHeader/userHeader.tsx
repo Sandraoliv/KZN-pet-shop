@@ -27,7 +27,10 @@ export function UserHeader() {
             </IconButton>
           </li>
         </ul>
-        <TocIcon className="menuIcon" onClick={() => menuHamburguer()} />
+        <TocIcon
+          className="menuIcon"
+          // onClick={() => menuHamburguer()}
+        />
       </nav>
 
       <nav>

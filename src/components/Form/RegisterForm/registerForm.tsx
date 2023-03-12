@@ -24,7 +24,9 @@ export function RegisterForm() {
   });
 
   const submit: SubmitHandler<IRegisterFormValues> = (formdata) => {
-    registerUser(formdata);
+    const newFormData = { ...formdata, is_admin: false };
+
+    registerUser(newFormData);
   };
 
   return (

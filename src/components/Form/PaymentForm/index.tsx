@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 
 import { useNavigate } from "react-router-dom";
 import { StyledSpanFree } from "../../../pages/PaymentPage/styles";
-import { CartContext } from "../../../provider/CartContext/CartContext";
+import { shopContext } from "../../../provider/ShopContext/ShopContext";
 import { InputPayment } from "./InputPayment";
 import { StyledFormPayment } from "./style";
 import { IAdressFormValue } from "../../../provider/UserContext/@Types";
@@ -16,7 +16,7 @@ import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
 
 export function PaymentForm() {
-  const { productsListCart, setProductsListCart } = useContext(CartContext);
+  const { productsListCart, setProductsListCart } = useContext(shopContext);
   const [endereco, setEndereco] = useState("");
   const [exibirFreteGratis, setExibirFreteGratis] = useState(false);
   const {

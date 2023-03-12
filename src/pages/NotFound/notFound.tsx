@@ -1,4 +1,4 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { StyledNotFoundPage } from "./styles";
 
 export function NotFound() {
@@ -10,10 +10,10 @@ export function NotFound() {
         incorreta <br />
         Tente fazer o cadastro no nosso site:
       </p>
-      {/* <Link className='link' to='/register'>
-        {' '}
-        Cadastro{' '}
-      </Link> */}
+      <Link className="link" to="/register">
+        {" "}
+        Cadastro{" "}
+      </Link>
     </StyledNotFoundPage>
   );
 }
