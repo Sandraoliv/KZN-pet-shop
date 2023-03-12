@@ -86,6 +86,12 @@ export const StyledHeader = styled.header`
     width: 100%;
   }
 
+  h2 {
+    color: var(--color-secondary);
+
+    font-size: 1.5rem;
+  }
+
   .login {
     display: flex;
     align-items: center;
@@ -154,11 +160,11 @@ export const StyledHeader = styled.header`
     color: #f57c00;
   }
 
-  .cart {
+  .icon {
     color: var(--color-secondary);
   }
 
-  .cart:hover {
+  .icon:hover {
     color: #f57c00;
   }
 

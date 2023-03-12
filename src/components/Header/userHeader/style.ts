@@ -26,7 +26,7 @@ export const UsHeader = styled.header`
     align-items: center;
   }
 
-  button {
+  .shop {
     color: white;
     background-color: var(--color-secondary);
     box-shadow: none;
@@ -34,14 +34,27 @@ export const UsHeader = styled.header`
     font-family: "Tilt Neon";
   }
 
-  button:hover {
+  .shop:hover {
     background-color: #f57c00;
     box-shadow: none;
   }
 
-  svg {
+  .icon {
     color: var(--color-secondary);
+  }
+
+  .icon:hover {
+    color: #f57c00;
+  }
+
+  .menuIcon {
+    color: var(--color-secondary);
+
     width: 30px;
-    height: 20px;
+    height: 30px;
+  }
+
+  .menuIcon:hover {
+    color: #f57c00;
   }
 `;
