@@ -1,29 +1,60 @@
 import { Header } from "../../components/Header/headerShop/headerShop";
 import { StyledShop } from "./style";
 import { FiArrowRight } from "react-icons/fi";
-import { useContext, useEffect, useState } from "react";
-import { CartContext } from "../../provider/CartContext/CartContext";
+import { useContext, useEffect } from "react";
+import { shopContext } from "../../provider/ShopContext/ShopContext";
 import { ProductList } from "../../components/ProductList/productList";
 import cachorrinhoMobile from "../../assets/cachorroMobile.svg";
 import cachorrinho from "../../assets/cachorro-e-gato-3D.svg";
-
-import instituicao1 from "../../assets/Instituicoes/amigosdesaofrancisco_2.svg";
-import instituicao2 from "../../assets/Instituicoes/clubedosviralatas_2.svg";
-import instituicao3 from "../../assets/Instituicoes/gatopoleslogo_2.svg";
-import instituicao4 from "../../assets/Instituicoes/logo-laranja_edited_edited_edited_2.svg";
-import instituicao5 from "../../assets/Instituicoes/logotipo_2.svg";
-import instituicao6 from "../../assets/Instituicoes/mundodosgatosadocao_2.svg";
-import { IProduct } from "../../provider/CartContext/@Types";
+import { UserContext } from "../../provider/UserContext/UserContext";
+import { MdAdd } from "react-icons/md";
+import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
+import { EmptyList } from "../../components/EmptyList/emptyList";
+import { DeleteProductModal } from "../../components/DeleteProductModal/deleteProductModal";
+import { CompanyeCard } from "../../components/CompanyeCard/companyeCard";
+import { StyledModal } from "../../styles/styleModal";
+import { AddProductForm } from "../../components/Form/AddProductForm/addProductForm";
+import { UpdateProductForm } from "../../components/Form/UpdateProductForm/updateProductForm";
+import { AddCompanyeForm } from "../../components/Form/AddCompanyeForm/addCompanyeForm";
 
 export function ShopPage() {
-  const { productList, loadProductList } = useContext(CartContext);
-  const [coleiras, setColeiras] = useState<IProduct[]>([]);
-  const [brinquedos, setBrinquedos] = useState<IProduct[]>([]);
-  const [acessorios, setAcessorios] = useState<IProduct[]>([]);
+  const {
+    addCompanyeState,
+    setAddCompanyeState,
+    deleteProductState,
+    uptadeProductState,
+    addProductState,
+    setAddProductState,
+    productList,
+    loadProductList,
+    coleiras,
+    setColeiras,
+    brinquedos,
+    setBrinquedos,
+    acessorios,
+    setAcessorios,
+    tokenState,
+    setTokenState,
+    loadCompanyes,
+    companyes,
+    modalADM,
+    loading,
+    setModalADM,
+  } = useContext(shopContext);
+
+  const { user } = useContext(UserContext);
   let token = localStorage.getItem("@token");
+  const navigate = useNavigate();
 
   useEffect(() => {
     loadProductList();
+    loadCompanyes();
+    console.log(user);
+
+    if (tokenState) {
+      setTokenState(true);
+    }
   }, []);
 
   useEffect(() => {
@@ -45,8 +76,25 @@ export function ShopPage() {
     setAcessorios(acessorios);
   }, [productList]);
 
+  useEffect(() => {
+    if (token == null && user?.is_admin == true) {
+      navigate("/login");
+      toast.error("Você deve estar logado para acessar essa página !!");
+    }
+  }, []);
+
+  function handleAddProductState() {
+    setAddProductState(!addProductState);
+    setModalADM(!modalADM);
+  }
+
+  function handleAddCompanyeState() {
+    setAddCompanyeState(!addCompanyeState);
+    setModalADM(!modalADM);
+  }
+
   return (
-    <StyledShop>
+    <StyledShop token={tokenState}>
       <Header />
 
       <div className="blueBall"></div>
@@ -56,11 +104,6 @@ export function ShopPage() {
       <div className="orangeBall"></div>
 
       <section className="banner">
-        {/* decidir */}
-        {/* <div className="input">
-          <input type="text" />
-        </div> */}
-
         <div className="paragraph">
           <p>Produtos de alta qualidade para seu pet pensando em todos</p>
           <span>
@@ -91,33 +134,81 @@ export function ShopPage() {
       </section>
 
       <main>
-        <h2>SHOP</h2>
-        <div className="category">
-          <h2>COLEIRAS</h2>
-          {coleiras.length > 0 ? <ProductList productList={coleiras} /> : null}
-        </div>
-
-        <div className="category">
-          <h2>BRINQUEDOS</h2>
-          {brinquedos.length > 0 ? (
-            <ProductList productList={brinquedos} />
+        <div className="ShopTittle">
+          <h2>SHOP</h2>
+          {user?.is_admin ? (
+            <MdAdd onClick={() => handleAddProductState()} />
           ) : null}
         </div>
-
         <div className="category">
-          <h2>ACESSÓRIOS</h2>
-          {acessorios.length > 0 ? (
-            <ProductList productList={acessorios} />
-          ) : null}
+          <>
+            <h2>COLEIRAS</h2>
+            {loading ? (
+              <div className="loading">
+                {" "}
+                <p>Carregando...</p>{" "}
+              </div>
+            ) : coleiras.length > 0 ? (
+              <ProductList productList={coleiras} />
+            ) : (
+              <EmptyList />
+            )}
+          </>
+        </div>
+        <div className="category">
+          <>
+            <h2>BRINQUEDOS</h2>
+            {loading ? (
+              <div className="loading">
+                <p>Carregando...</p>
+              </div>
+            ) : brinquedos.length > 0 ? (
+              <ProductList productList={brinquedos} />
+            ) : (
+              <EmptyList />
+            )}
+          </>
+        </div>
+        <div className="category">
+          <>
+            <h2>ACESSÓRIOS</h2>
+
+            {loading ? (
+              <div className="loading">
+                <p>Carregando...</p>
+              </div>
+            ) : acessorios.length > 0 ? (
+              <ProductList productList={acessorios} />
+            ) : (
+              <EmptyList />
+            )}
+          </>
         </div>
         <footer id="footer">
           <div>
-            <img src={instituicao1} alt="" />
-            <img src={instituicao4} alt="" />
-            <img src={instituicao2} alt="" />
-            <img src={instituicao3} alt="" />
-            <img src={instituicao5} alt="" />
-            <img src={instituicao6} alt="" />
+            <h3>Instituições beneficiadas</h3>
+
+            {user.is_admin ? (
+              <MdAdd onClick={() => handleAddCompanyeState()} />
+            ) : null}
+          </div>
+
+          <div className="companyes">
+            {loading ? (
+              <div className="loading">
+                <p>Carregando...</p>
+              </div>
+            ) : (
+              <div>
+                {companyes.length > 0 ? (
+                  companyes.map((companye) => (
+                    <CompanyeCard key={companye.id} companye={companye} />
+                  ))
+                ) : (
+                  <p> Ainda estamos contatando as instituições =/</p>
+                )}
+              </div>
+            )}
           </div>
 
           <p>
@@ -132,6 +223,16 @@ export function ShopPage() {
           <section>MAIS DE R$ 100.000,000 EM DOAÇÕES</section>
         </footer>
       </main>
+
+      {modalADM ? <StyledModal /> : null}
+
+      {addProductState ? <AddProductForm /> : null}
+
+      {uptadeProductState ? <UpdateProductForm /> : null}
+
+      {deleteProductState ? <DeleteProductModal /> : null}
+
+      {addCompanyeState ? <AddCompanyeForm /> : null}
     </StyledShop>
   );
 }

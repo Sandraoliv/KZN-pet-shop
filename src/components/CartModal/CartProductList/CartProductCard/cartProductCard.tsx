@@ -1,18 +1,20 @@
-import { IProduct } from "../../../../provider/CartContext/@Types";
+import { IProduct } from "../../../../provider/ShopContext/@Types";
 import { StyledCartProductCard } from "./styles";
 import { RiDeleteBin6Line } from "react-icons/Ri";
 import { useContext } from "react";
-import { CartContext } from "../../../../provider/CartContext/CartContext";
+import { shopContext } from "../../../../provider/ShopContext/ShopContext";
 import { toast } from "react-toastify";
 interface IProductProps {
   product: IProduct;
 }
 
 export function CartProductCard({ product }: IProductProps) {
-  const { productsListCart, setProductsListCart } = useContext(CartContext);
+  const { productsListCart, setProductsListCart } = useContext(shopContext);
 
   function removeToCart(id: number, name: string) {
-    const newCart = productsListCart.filter((product) => product.id != id);
+    const newCart = productsListCart.filter(
+      (product: IProduct) => product.id != id
+    );
     setProductsListCart(newCart);
     localStorage.setItem("@ListCart", JSON.stringify(newCart));
     toast.success(`Produto ${name} removido com sucesso`);

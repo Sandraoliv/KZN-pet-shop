@@ -1,16 +1,11 @@
 import { LoginForm } from "../../components/Form/LoginForm";
 import { StyledLoginPage } from "./style";
-import { useContext } from "react";
-import { UserContext } from "../../provider/UserContext/UserContext";
 import block from "../../assets/Rectangle 33.svg";
 import animals from "../../assets/animais-domesticos-1024x654 1.svg";
 import arrow from "../../assets/Frame 106.svg";
-
 import { GlobalHeader } from "../../components/Header/globalHeader/globalHeader";
 
 export function LoginPage() {
-  const { loginUser } = useContext(UserContext);
-
   return (
     <>
       <GlobalHeader />

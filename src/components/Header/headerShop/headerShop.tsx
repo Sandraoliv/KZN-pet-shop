@@ -4,25 +4,24 @@ import { GrMenu } from "react-icons/gr";
 import { StyledHeader } from "./styles";
 import { useContext, useState } from "react";
 import { ModalCart } from "../../CartModal/cartModal";
-import { CartContext } from "../../../provider/CartContext/CartContext";
+import { shopContext } from "../../../provider/ShopContext/ShopContext";
 import { RxExit } from "react-icons/rx";
 import logo from "../../../assets/logo.svg";
 import { UserContext } from "../../../provider/UserContext/UserContext";
 
 export function Header() {
   const [menu, setMenu] = useState(false);
-  const { modal, setModal } = useContext(CartContext);
+  const { modal, setModal } = useContext(shopContext);
   const { logoutUser, user } = useContext(UserContext);
+
   let token = localStorage.getItem("@token");
-  console.log(user);
 
   function menuHamburguer() {
     setMenu(!menu);
   }
 
   return (
-    // rever
-    <StyledHeader menu={menu} token={token}>
+    <StyledHeader menu={menu}>
       <div className="navUp">
         <div className="logo">
           <img src={logo} alt="" />

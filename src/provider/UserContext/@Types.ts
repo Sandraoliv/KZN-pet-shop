@@ -3,9 +3,8 @@ export interface IDefaultProviderProps {
 }
 
 export interface IresponseRegister {
-  accessToken: string;
   user: {
-    id: string;
+    id: number;
     name: string;
     email: string;
   };
@@ -14,28 +13,32 @@ export interface IresponseRegister {
 export interface IresponseLogin {
   accessToken: string;
   user: {
-    id: string;
+    id: number;
     name: string;
     email: string;
+    is_admin: boolean;
   };
 }
 
 export interface IUser {
-  id: string;
+  id: number;
   name: string;
   email: string;
+  is_admin: boolean;
 }
 
 export interface IresponseGetUser {
-  id: string;
+  id: number;
   name: string;
   email: string;
+  is_admin: boolean;
 }
 
 export interface IresponseUpdateUser {
-  id: string;
+  id: number;
   name: string;
   email: string;
+  is_admin: boolean;
 }
 export interface IUpdateUserFormValues {
   name: string;
@@ -61,7 +64,8 @@ export interface IAdressFormValue {
 export interface IUserContext {
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  user: IUser | undefined;
+  setUser: React.Dispatch<React.SetStateAction<IUser>>;
+  user: IUser;
   registerUser: (formData: IRegisterFormValues) => Promise<void>;
   loginUser: (formData: ILoginFormValues) => Promise<void>;
   logoutUser: () => void;

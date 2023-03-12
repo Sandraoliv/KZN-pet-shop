@@ -12,10 +12,24 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Tilt Neon', 'Inter', sans-serif;
   }
 
-svg {
-  cursor: pointer;
+  html{
+    height: 100%;
+    width: 100%;
+  }
 
-}
+  body{
+    height: 100%;
+    width: 100%;
+  }
+
+  #root{
+   height: 100%;
+   width: 100%;
+  }
+
+  svg {
+    cursor: pointer;
+  }
 
   button{
     cursor: pointer;
@@ -31,8 +45,6 @@ svg {
     --color-tertiary-transparent:#e8f6fd;
     --color-secundary-hover : rgba(255, 185, 77);
 
-
-
     --negative: #e60000;
     --warning: #ffcd07;
     --sucess: #168821;
@@ -44,5 +56,4 @@ svg {
     --grey-600: #333333;
 
   }
-
 `;

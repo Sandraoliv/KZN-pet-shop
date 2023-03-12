@@ -34,8 +34,9 @@ export function RegisterForm() {
   });
 
   const submit: SubmitHandler<IRegisterFormValues> = (formdata) => {
-    console.log(formdata);
-    registerUser(formdata);
+    const newFormData = { ...formdata, is_admin: false };
+
+    registerUser(newFormData);
   };
 
   return (
@@ -44,7 +45,7 @@ export function RegisterForm() {
       <MainFormRegister>
         <img src={imgFormRegister} alt="" />
         <form onSubmit={handleSubmit(submit)}>
-          <section className='titleForm'>
+          <section className="titleForm">
             <div></div>
             <h3>Cadastre-se</h3>
           </section>

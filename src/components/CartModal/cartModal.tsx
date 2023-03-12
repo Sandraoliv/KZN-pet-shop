@@ -1,17 +1,19 @@
 import { useContext } from "react";
-import { CartContext } from "../../provider/CartContext/CartContext";
+import { shopContext } from "../../provider/ShopContext/ShopContext";
 import { CartProductList } from "./CartProductList/cartProductList";
 import { StyledCartModal } from "./style";
 import cachorrinhoModal from "../../assets/cachorro_Background_Removed_1.svg";
 import { Link } from "react-router-dom";
+import { IProduct } from "../../provider/ShopContext/@Types";
 
 export function ModalCart() {
-  const { modal, setModal } = useContext(CartContext);
-  const { productsListCart } = useContext(CartContext);
+  const { modal, setModal, productsListCart } = useContext(shopContext);
 
   let totalValue = 0;
 
-  productsListCart.map((product) => (totalValue = totalValue + product.price));
+  productsListCart.map(
+    (product: IProduct) => (totalValue = totalValue + product.price)
+  );
 
   console.log(totalValue);
 
