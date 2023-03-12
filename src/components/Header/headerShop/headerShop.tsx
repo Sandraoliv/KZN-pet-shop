@@ -38,7 +38,7 @@ export function Header() {
             <h2>Olá {user?.name}! </h2>
 
             <IconButton className="icon" aria-label="add to shopping cart">
-              <AccountCircleIcon onClick={() => navigate("/user")} />
+              <AccountCircleIcon onClick={() => navigate("/profile")} />
             </IconButton>
 
             <IconButton className="icon" aria-label="add to shopping cart">
@@ -78,7 +78,7 @@ export function Header() {
           <h2>Olá {user?.name}! </h2>
 
           <IconButton className="icon" aria-label="add to shopping cart">
-            <AccountCircleIcon onClick={() => navigate("/user")} />
+            <AccountCircleIcon onClick={() => navigate("/profile")} />
           </IconButton>
 
           <IconButton className="icon" aria-label="add to shopping cart">

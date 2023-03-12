@@ -3,7 +3,7 @@ import { SectionUserPage } from "./style";
 import Button from "@mui/material/Button";
 import { RxExit } from "react-icons/rx";
 
-export function UserPage() {
+export function ProfilePage() {
   return (
     <SectionUserPage>
       <UserHeader />
