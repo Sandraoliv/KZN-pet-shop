@@ -1,17 +1,36 @@
 import styled, { css } from "styled-components";
 
-interface Imenu {
+interface IMenu {
   menu: boolean;
+  tokenProps: boolean;
 }
 
 export const StyledHeader = styled.header`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding: 8px 16px;
-  justify-content: space-between;
-  background-color: var(--color-assistant);
+  ${({ tokenProps }: IMenu) => {
+    if (tokenProps) {
+      return css`
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+
+        padding: 10px 70px;
+        justify-content: space-between;
+        padding: 10px 70px;
+        background-color: var(--color-assistant);
+      `;
+    } else {
+      return css`
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 10px 70px;
+        justify-content: space-between;
+        background-color: var(--color-tertiary-transparent);
+      `;
+    }
+  }}
 
   .navUp {
     display: flex;
@@ -39,7 +58,7 @@ export const StyledHeader = styled.header`
     color: var(--color-secondary);
   }
 
-  ${({ menu }: Imenu) => {
+  ${({ menu }: IMenu) => {
     if (menu) {
       return css`
         .navDown {
@@ -100,7 +119,7 @@ export const StyledHeader = styled.header`
     display: flex;
     align-items: center;
     justify-content: center;
-
+    z-index: 10;
     width: 100%;
     height: 100%;
 

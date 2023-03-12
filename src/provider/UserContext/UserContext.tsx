@@ -30,7 +30,7 @@ export function UserProvider({ children }: IDefaultProviderProps) {
   const [user, setUser] = useState<IUser>(
     localStorageUser ? JSON.parse(localStorageUser) : {}
   );
-
+  // const [tokenState, setTokenState] = useState(false);
   let token = localStorage.getItem("@token");
 
   async function registerUser(formData: IRegisterFormValues) {

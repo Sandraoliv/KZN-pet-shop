@@ -15,10 +15,15 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 export function Header() {
   const [menu, setMenu] = useState(false);
-  const { modal, setModal } = useContext(shopContext);
+  const { modal, setModal, setTokenState, tokenState } =
+    useContext(shopContext);
   const { logoutUser, user } = useContext(UserContext);
 
   let token = localStorage.getItem("@token");
+
+  if (token) {
+    setTokenState(true);
+  }
 
   function menuHamburguer() {
     setMenu(!menu);
@@ -27,7 +32,7 @@ export function Header() {
   const navigate = useNavigate();
 
   return (
-    <StyledHeader menu={menu}>
+    <StyledHeader menu={menu} tokenProps={tokenState}>
       <div className="navUp">
         <div className="logo">
           <img src={logo} alt="" />

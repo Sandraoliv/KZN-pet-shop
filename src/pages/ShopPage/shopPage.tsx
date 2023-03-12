@@ -186,7 +186,7 @@ export function ShopPage() {
         </div>
         <footer id="footer">
           <div>
-            <h3>Instituições beneficiadas</h3>
+            <h2>Instituições beneficiadas</h2>
 
             {user.is_admin ? (
               <MdAdd onClick={() => handleAddCompanyeState()} />
