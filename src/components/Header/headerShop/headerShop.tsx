@@ -1,6 +1,4 @@
-import { Link } from "react-router-dom";
-import { HiShoppingCart } from "react-icons/hi";
-import { GrMenu } from "react-icons/gr";
+import { Link, useNavigate } from "react-router-dom";
 import { StyledHeader } from "./styles";
 import { useContext, useState } from "react";
 import { ModalCart } from "../../CartModal/cartModal";
@@ -12,6 +10,8 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import TocIcon from "@mui/icons-material/Toc";
+import LogoutIcon from "@mui/icons-material/Logout";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 export function Header() {
   const [menu, setMenu] = useState(false);
@@ -22,6 +22,8 @@ export function Header() {
   function menuHamburguer() {
     setMenu(!menu);
   }
+
+  const navigate = useNavigate();
 
   return (
     // rever
@@ -35,9 +37,15 @@ export function Header() {
           <div className="nav">
             <h2>Olá {user?.name}! </h2>
 
-            <RxExit onClick={() => logoutUser()} />
+            <IconButton className="icon" aria-label="add to shopping cart">
+              <AccountCircleIcon onClick={() => navigate("/user")} />
+            </IconButton>
 
-            <IconButton className="cart" aria-label="add to shopping cart">
+            <IconButton className="icon" aria-label="add to shopping cart">
+              <LogoutIcon onClick={() => logoutUser()} />
+            </IconButton>
+
+            <IconButton className="icon" aria-label="add to shopping cart">
               <AddShoppingCartIcon onClick={() => setModal(!modal)} />
             </IconButton>
           </div>
@@ -54,7 +62,7 @@ export function Header() {
               </Link>
             </Button>
 
-            <IconButton className="cart" aria-label="add to shopping cart">
+            <IconButton className="icon" aria-label="add to shopping cart">
               <AddShoppingCartIcon onClick={() => setModal(!modal)} />
             </IconButton>
           </div>
@@ -67,12 +75,19 @@ export function Header() {
 
       {token ? (
         <div className="navDown">
-          <h2>Usuario logado </h2>
+          <h2>Olá {user?.name}! </h2>
 
-          <IconButton className="cart" aria-label="add to shopping cart">
+          <IconButton className="icon" aria-label="add to shopping cart">
+            <AccountCircleIcon onClick={() => navigate("/user")} />
+          </IconButton>
+
+          <IconButton className="icon" aria-label="add to shopping cart">
             <AddShoppingCartIcon onClick={() => setModal(!modal)} />
           </IconButton>
-          <RxExit onClick={() => logoutUser()} />
+
+          <IconButton className="icon" aria-label="add to shopping cart">
+            <LogoutIcon onClick={() => logoutUser()} />
+          </IconButton>
         </div>
       ) : (
         <div className="navDown">
@@ -87,7 +102,7 @@ export function Header() {
             </Link>
           </Button>
 
-          <IconButton className="cart" aria-label="add to shopping cart">
+          <IconButton className="icon" aria-label="add to shopping cart">
             <AddShoppingCartIcon onClick={() => setModal(!modal)} />
           </IconButton>
         </div>
