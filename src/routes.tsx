@@ -6,7 +6,7 @@ import { RegisterPage } from "./pages/RegisterPage";
 import { ShopPage } from "./pages/ShopPage/shopPage";
 import { SucessPage } from "./pages/SucessPage/sucessPage";
 import { ShopProvider } from "./provider/ShopContext/ShopContext";
-import { UserPage } from "./pages/UserPage/userPage";
+import { ProfilePage } from "./pages/ProfilePage/profilePage";
 import { UserProvider } from "./provider/UserContext/UserContext";
 
 export const RouterComponent = () => {
@@ -19,6 +19,7 @@ export const RouterComponent = () => {
           <Route path="/" element={<ShopPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route
             path="/payment"
             element={token ? <PaymentPage /> : <LoginPage />}

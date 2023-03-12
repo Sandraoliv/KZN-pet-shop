@@ -98,7 +98,7 @@ export function UserProvider({ children }: IDefaultProviderProps) {
     try {
       setLoading(true);
       const response = await api.patch<IresponseUpdateUser>(
-        `/users/"${id}`,
+        `/users/${id}`,
         formData,
         {
           headers: {
@@ -116,9 +116,11 @@ export function UserProvider({ children }: IDefaultProviderProps) {
   }
 
   async function deleteUser(id: number) {
+    console.log(id);
+
     try {
       setLoading(true);
-      const response = await api.post<IresponseUpdateUser>(`/users/${id}`, {
+      const response = await api.delete<IresponseUpdateUser>(`/users/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
