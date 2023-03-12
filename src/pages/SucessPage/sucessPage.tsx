@@ -2,6 +2,7 @@ import { SuccessHeader } from "../../components/Header/headerSuccess/headerScucc
 import { StyledSucessPage } from "./style";
 import catcart from "../../assets/catcart.svg";
 import { useNavigate } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 export function SucessPage() {
   const navigate = useNavigate();
@@ -9,7 +10,6 @@ export function SucessPage() {
   return (
     <StyledSucessPage>
       <SuccessHeader />
-
       <div className="content-flex-desktop">
         <div className="container-mensage">
           <p>Compra finalizada com sucesso </p>
@@ -19,7 +19,9 @@ export function SucessPage() {
         </div>
       </div>
       <div className="container-button">
-        <button onClick={() => navigate("/")}>SHOP</button>
+        <Button onClick={() => navigate("/")} variant="contained">
+          SHOP
+        </Button>
       </div>
     </StyledSucessPage>
   );

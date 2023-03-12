@@ -15,6 +15,21 @@ export const StyledFormPayment = styled.form`
     text-align: center;
     margin-bottom: 50px;
   }
+
+  p {
+    color: var(--color-secondary);
+  }
+
+  label {
+    font-family: "Tilt Neon";
+  }
+  input {
+    background-color: var(--grey-0);
+    color: var(--color-secondary);
+
+    font-family: "Tilt Neon";
+  }
+
   .select-container {
     display: flex;
     margin-top: 15px;
@@ -45,18 +60,20 @@ export const StyledFormPayment = styled.form`
     width: 100%;
     display: flex;
     justify-content: center;
+    margin: 50px 0;
   }
+
   button {
-    width: 100%;
-    height: 70px;
-    background: #ff9b00;
-    border-radius: 20px;
-    font-weight: 400;
-    font-size: 30px;
-    line-height: 36px;
-    color: #ffffff;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    color: white;
+    background-color: var(--color-secondary);
+    box-shadow: none;
+
+    font-family: "Tilt Neon";
+  }
+
+  button:hover {
+    background-color: #f57c00;
+    box-shadow: none;
   }
 
   @media (min-width: 800px) {

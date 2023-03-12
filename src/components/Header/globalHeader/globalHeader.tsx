@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../../../assets/KNZLOGO.svg";
 import { GblHeader } from "./style";
+import Button from "@mui/material/Button";
 
 export function GlobalHeader() {
   return (
@@ -10,7 +11,9 @@ export function GlobalHeader() {
           <img src={logo} alt="" />
         </li>
         <li>
-          <Link to="/">Shop</Link>
+          <Button className="shop" variant="contained">
+            <Link to="/"> Shop </Link>
+          </Button>
         </li>
       </ul>
     </GblHeader>

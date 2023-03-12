@@ -21,15 +21,37 @@ export const GblHeader = styled.header`
     width: 100%;
   }
 
-  a {
+  .shop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--color-secondary);
+    box-shadow: none;
+
+    padding: 0;
+
     width: max-content;
-    height: 52px;
+    height: 35px;
 
-    padding: 5px 30px;
+    font-family: "Tilt Neon";
 
-    background: var(--color-secondary);
     border-radius: 10px;
+  }
 
-    color: #ffffff;
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    color: white;
+  }
+
+  .shop:hover {
+    background-color: #f57c00;
+    box-shadow: none;
   }
 `;

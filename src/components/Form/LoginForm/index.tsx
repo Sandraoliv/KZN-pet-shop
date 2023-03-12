@@ -8,6 +8,7 @@ import { UserContext } from "../../../provider/UserContext/UserContext";
 import { StyledLoginForm } from "./styledLoginForm";
 import { SubmitHandler } from "react-hook-form/dist/types/form";
 import { Input } from "../Input";
+import Button from "@mui/material/Button";
 
 export function LoginForm() {
   const navigate = useNavigate();
@@ -47,16 +48,17 @@ export function LoginForm() {
         error={errors.password}
       />
       <div className="formButtons">
-        <button type="submit" className="loginButton">
+        <Button type="submit" variant="contained" className="loginButton">
           Login
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
           className="redirectButton"
           onClick={() => handleRegisterClick()}
+          variant="contained"
         >
           Cadastre-se
-        </button>
+        </Button>
       </div>
     </StyledLoginForm>
   );
