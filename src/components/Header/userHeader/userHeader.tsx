@@ -6,6 +6,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import TocIcon from "@mui/icons-material/Toc";
 import { useContext } from "react";
 import { UserContext } from "../../../provider/UserContext/UserContext";
+import { Link } from "react-router-dom";
 
 export function UserHeader() {
   const { logoutUser } = useContext(UserContext);
@@ -17,7 +18,7 @@ export function UserHeader() {
         <ul>
           <li>
             <Button className="shop" type="submit" variant="contained">
-              Shop
+              <Link to="/"> Shop </Link>
             </Button>
           </li>
           <li>
@@ -33,7 +34,7 @@ export function UserHeader() {
         <ul>
           <li>
             <Button className="shop" type="submit" variant="contained">
-              Shop
+              <Link to="/"> Shop </Link>
             </Button>
           </li>
           <li>

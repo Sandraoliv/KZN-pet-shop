@@ -39,6 +39,17 @@ export const UsHeader = styled.header`
     box-shadow: none;
   }
 
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    color: white;
+  }
+
   .icon {
     color: var(--color-secondary);
   }
