@@ -10,6 +10,7 @@ import { MainFormRegister, SectionFormRegister } from "./style";
 import { Input } from "../Input";
 import Button from "@mui/material/Button";
 import { BackgroundPages } from "../../Background/BackgroundPages/backgroundPages";
+import { Link } from "react-router-dom";
 
 export function RegisterForm() {
   const { registerUser } = useContext(UserContext);
@@ -67,6 +68,9 @@ export function RegisterForm() {
 
           <Button type="submit" variant="contained">
             Cadastrar
+          </Button>
+          <Button className='redirect' type="button" variant="contained">
+            <Link to="/login"> Login </Link>
           </Button>
         </form>
       </MainFormRegister>
