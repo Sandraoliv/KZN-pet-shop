@@ -1,9 +1,11 @@
 import { IProduct } from "../../../../provider/ShopContext/@Types";
 import { StyledCartProductCard } from "./styles";
-import { RiDeleteBin6Line } from "react-icons/Ri";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { useContext } from "react";
 import { shopContext } from "../../../../provider/ShopContext/ShopContext";
 import { toast } from "react-toastify";
+import IconButton from "@mui/material/IconButton";
+
 interface IProductProps {
   product: IProduct;
 }
@@ -34,9 +36,9 @@ export const CartProductCard = ({ product }: IProductProps) => {
       </div>
 
       <div>
-        <RiDeleteBin6Line
-          onClick={() => removeToCart(product.id, product.name)}
-        />
+        <IconButton className="icon" aria-label="add to shopping cart">
+          <DeleteIcon onClick={() => removeToCart(product.id, product.name)} />
+        </IconButton>
       </div>
     </StyledCartProductCard>
   );

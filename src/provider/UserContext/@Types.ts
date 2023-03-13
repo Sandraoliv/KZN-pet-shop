@@ -72,4 +72,6 @@ export interface IUserContext {
   getUser(id: number): Promise<void>;
   uptadeUser(formData: IUpdateUserFormValues, id: number): Promise<void>;
   deleteUser(id: number): Promise<void>;
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }

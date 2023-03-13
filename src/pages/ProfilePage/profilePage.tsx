@@ -18,9 +18,8 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export const ProfilePage = () => {
-  const [open, setOpen] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
-  const { user, uptadeUser, deleteUser } = useContext(UserContext);
+  const { user, uptadeUser, deleteUser, open, setOpen } = useContext(UserContext);
   const navigate = useNavigate();
   let token = localStorage.getItem("@token");
 
