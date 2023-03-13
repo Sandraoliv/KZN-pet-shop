@@ -5,6 +5,7 @@ export const SectionProfilePage = styled.section`
 
   main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 60px;
@@ -13,17 +14,17 @@ export const SectionProfilePage = styled.section`
   }
 
   main > img {
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
   }
 
   .infos {
     display: flex;
-    /* flex-direction: column; */
+    flex-direction: column-reverse;
     justify-content: space-between;
     width: max-content;
     height: max-content;
-    gap: 200px;
+    gap: 20px;
 
     padding: 85px;
 
@@ -43,12 +44,47 @@ export const SectionProfilePage = styled.section`
     color: #f57c00;
   }
 
+  .navBtn {
+    display: flex;
+    justify-content: center;
+
+    padding-left: 10px;
+  }
+
   .navBtn > button {
+    display: flex;
+    justify-content: center;
+
+    padding-left: 10px;
+
     color: var(--color-secondary);
   }
 
-  .navBtn:hover {
+  .icons {
     color: #f57c00;
+  }
+
+  @media (min-width: 1024px) {
+    main {
+      flex-direction: row;
+    }
+
+    main > img {
+      width: 300px;
+      height: 300px;
+    }
+
+    .infos {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 200px;
+    }
+
+    .navBtn {
+      height: max-content;
+
+      padding: 0;
+    }
   }
 `;
 
