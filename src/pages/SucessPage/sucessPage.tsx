@@ -6,8 +6,6 @@ import Button from "@mui/material/Button";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { BackgroundPages } from "../../components/Background/BackgroundPages/backgroundPages";
-import { useEffect } from "react";
-import { toast } from "react-toastify";
 
 export const SucessPage = () => {
   const navigate = useNavigate();
