@@ -7,7 +7,7 @@ import {
   IModalProductFormValues,
   IProduct,
 } from "../../../provider/ShopContext/@Types";
-import { Input } from "../Input";
+import { Input } from "../Input/input";
 
 import { modalAddCompanyeFormSchema } from "./validations";
 import { styled } from "@mui/material/styles";
@@ -17,7 +17,7 @@ import { UserContext } from "../../../provider/UserContext/UserContext";
 import { shopContext } from "../../../provider/ShopContext/ShopContext";
 import { MenuItem, Select } from "@mui/material";
 
-export function AddCompanyeForm() {
+export const AddCompanyeForm = () => {
   // category: string
   const { addCompanye, closeModalADM } = useContext(shopContext);
 
@@ -39,8 +39,6 @@ export function AddCompanyeForm() {
   });
 
   const submit: SubmitHandler<ICompanye> = (formdata) => {
-    console.log(formdata);
-
     addCompanye(formdata);
   };
 
@@ -70,4 +68,4 @@ export function AddCompanyeForm() {
       </ColorButton>
     </form>
   );
-}
+};

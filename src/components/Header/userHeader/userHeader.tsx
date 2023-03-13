@@ -4,15 +4,22 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import LogoutIcon from "@mui/icons-material/Logout";
 import TocIcon from "@mui/icons-material/Toc";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../../provider/UserContext/UserContext";
 import { Link } from "react-router-dom";
 
-export function UserHeader() {
+export const UserHeader = () => {
   const { logoutUser } = useContext(UserContext);
 
+  const [menu, setMenu] = useState(false);
+
+  const menuHamburguer = () => {
+    setMenu(!menu);
+  };
   return (
-    <UsHeader>
+    <UsHeader
+    // menu={menu}
+    >
       <img src={logo} alt="" />
       <nav>
         <ul>
@@ -27,10 +34,7 @@ export function UserHeader() {
             </IconButton>
           </li>
         </ul>
-        <TocIcon
-          className="menuIcon"
-          // onClick={() => menuHamburguer()}
-        />
+        <TocIcon className="menuIcon" onClick={() => menuHamburguer()} />
       </nav>
 
       <nav>
@@ -49,4 +53,4 @@ export function UserHeader() {
       </nav>
     </UsHeader>
   );
-}
+};

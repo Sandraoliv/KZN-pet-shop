@@ -4,10 +4,8 @@ import { shopContext } from "../../../provider/ShopContext/ShopContext";
 import { CartProductCard } from "./CartProductCard/cartProductCard";
 import { StyledCartProductList } from "./style";
 
-export function CartProductList() {
+export const CartProductList = () => {
   const { productsListCart } = useContext(shopContext);
-
-  console.log(productsListCart);
 
   return (
     <StyledCartProductList>
@@ -16,4 +14,4 @@ export function CartProductList() {
       ))}
     </StyledCartProductList>
   );
-}
+};

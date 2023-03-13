@@ -43,9 +43,10 @@ export const GlobalStyles = createGlobalStyle`
     --color-tertiary: #18a8e5;
     --color-assistant: #adce53;
     --color-tertiary-transparent:#e8f6fd;
-    --color-secundary-hover : rgba(255, 185, 77);
+    --color-secondary-hover : #f57c00;
 
     --negative: #e60000;
+    --negative-hover:#e63738;
     --warning: #ffcd07;
     --sucess: #168821;
     --information: #155bcb;

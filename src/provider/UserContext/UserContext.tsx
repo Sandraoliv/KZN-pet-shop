@@ -20,7 +20,7 @@ import { shopContext } from "../ShopContext/ShopContext";
 
 export const UserContext = createContext({} as IUserContext);
 
-export function UserProvider({ children }: IDefaultProviderProps) {
+export const UserProvider = ({ children }: IDefaultProviderProps) => {
   const navigate = useNavigate();
   const localStorageUser = localStorage.getItem("@user");
 
@@ -30,10 +30,10 @@ export function UserProvider({ children }: IDefaultProviderProps) {
   const [user, setUser] = useState<IUser>(
     localStorageUser ? JSON.parse(localStorageUser) : {}
   );
-
+  // const [tokenState, setTokenState] = useState(false);
   let token = localStorage.getItem("@token");
 
-  async function registerUser(formData: IRegisterFormValues) {
+  const registerUser = async (formData: IRegisterFormValues) => {
     try {
       setLoading(true);
       const response = await api.post<IresponseRegister>("/users", formData);
@@ -51,8 +51,8 @@ export function UserProvider({ children }: IDefaultProviderProps) {
     } finally {
       setLoading(false);
     }
-  }
-  async function loginUser(formData: ILoginFormValues) {
+  };
+  const loginUser = async (formData: ILoginFormValues) => {
     try {
       setLoading(true);
       const response = await api.post<IresponseLogin>("/login", formData);
@@ -76,9 +76,9 @@ export function UserProvider({ children }: IDefaultProviderProps) {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
-  async function getUser(id: number) {
+  const getUser = async (id: number) => {
     try {
       setLoading(true);
       const response = await api.get<IresponseGetUser>(`/users/${id}`, {
@@ -92,9 +92,9 @@ export function UserProvider({ children }: IDefaultProviderProps) {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
-  async function uptadeUser(formData: IUpdateUserFormValues, id: number) {
+  const uptadeUser = async (formData: IUpdateUserFormValues, id: number) => {
     try {
       setLoading(true);
       const response = await api.patch<IresponseUpdateUser>(
@@ -113,11 +113,9 @@ export function UserProvider({ children }: IDefaultProviderProps) {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
-  async function deleteUser(id: number) {
-    console.log(id);
-
+  const deleteUser = async (id: number) => {
     try {
       setLoading(true);
       const response = await api.delete<IresponseUpdateUser>(`/users/${id}`, {
@@ -138,15 +136,21 @@ export function UserProvider({ children }: IDefaultProviderProps) {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
-  function logoutUser() {
+  const logoutUser = () => {
     toast.success(`Até logo ${user?.name}!! `);
     localStorage.removeItem("@token");
     localStorage.removeItem("@user");
     setTokenState(false);
     navigate("/login");
-  }
+    setUser({
+      id: 0,
+      name: "empty",
+      email: "empty",
+      is_admin: false,
+    });
+  };
 
   return (
     <UserContext.Provider
@@ -166,4 +170,4 @@ export function UserProvider({ children }: IDefaultProviderProps) {
       {children}
     </UserContext.Provider>
   );
-}
+};

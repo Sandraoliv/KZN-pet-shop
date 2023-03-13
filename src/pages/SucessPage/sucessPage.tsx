@@ -3,10 +3,20 @@ import { StyledSucessPage } from "./style";
 import catcart from "../../assets/catcart.svg";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
 import { BackgroundPages } from "../../components/Background/BackgroundPages/backgroundPages";
 
-export function SucessPage() {
+export const SucessPage = () => {
   const navigate = useNavigate();
+  let token = localStorage.getItem("@token");
+
+  useEffect(() => {
+    if (token == undefined) {
+      navigate("/login");
+      toast.error("você deve estar logado para acessar está página");
+    }
+  }, []);
 
   return (
     <div>
@@ -29,4 +39,4 @@ export function SucessPage() {
       </StyledSucessPage>
     </div>
   );
-}
+};

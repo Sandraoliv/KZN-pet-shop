@@ -4,8 +4,9 @@ import { IProduct, IProductProps } from "../../../provider/ShopContext/@Types";
 import { shopContext } from "../../../provider/ShopContext/ShopContext";
 import { UserContext } from "../../../provider/UserContext/UserContext";
 import { StyledProductCard } from "./stsyle";
+import Button from "@mui/material/Button";
 
-export function ProductCard({ product }: IProductProps) {
+export const ProductCard = ({ product }: IProductProps) => {
   const {
     productList,
     productsListCart,
@@ -21,7 +22,7 @@ export function ProductCard({ product }: IProductProps) {
 
   const { user } = useContext(UserContext);
 
-  function addToCart(product: IProduct) {
+  const addToCart = (product: IProduct) => {
     let aux = true;
 
     productsListCart?.map((sameProduct) => {
@@ -42,32 +43,24 @@ export function ProductCard({ product }: IProductProps) {
         );
       }
     });
-  }
+  };
 
-  function handleUptadeProductState(productprops: IProduct) {
+  const handleUptadeProductState = (productprops: IProduct) => {
     setCurrentProduct(productprops);
     setUptadeProductState(!uptadeProductState);
     setModalADM(!modalADM);
-  }
+  };
 
-  function handleDeleteProductState(productprops: IProduct) {
+  const handleDeleteProductState = (productprops: IProduct) => {
     setCurrentProduct(productprops);
     setDeleteProductState(!deleteProductState);
     setModalADM(!modalADM);
-  }
+  };
 
   return (
     <StyledProductCard user={user}>
       <div className="img__container">
         <img src={product.img} alt="" />
-
-        {user?.is_admin ? null : (
-          <div className="card__hover">
-            <button onClick={() => addToCart(product)} type="button">
-              adicionar produto ao carrinho
-            </button>
-          </div>
-        )}
       </div>
       <h3>{product.name}</h3>
       <div className="prices__container">
@@ -81,24 +74,34 @@ export function ProductCard({ product }: IProductProps) {
 
       {user?.is_admin ? (
         <div className="buttons">
-          <button
+          <Button
             onClick={() => handleUptadeProductState(product)}
             className="editar"
             type="button"
           >
             {" "}
             Editar
-          </button>
-          <button
+          </Button>
+
+          <Button
             onClick={() => handleDeleteProductState(product)}
             className="deletar"
             type="button"
           >
             {" "}
             Deletar
-          </button>
+          </Button>
         </div>
-      ) : null}
+      ) : (
+        <Button
+          type="button"
+          className="addToCart"
+          onClick={() => addToCart(product)}
+          variant="contained"
+        >
+          adicionar ao carrinho
+        </Button>
+      )}
     </StyledProductCard>
   );
-}
+};

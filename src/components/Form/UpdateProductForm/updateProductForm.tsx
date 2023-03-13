@@ -2,15 +2,16 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IProduct, IProductProps } from "../../../provider/ShopContext/@Types";
-import { Input } from "../Input";
+import { Input } from "../Input/input";
 
 import { modalProductFormSchema } from "./validations";
 // import { styled } from "@mui/material/styles";
 // import { orange, purple } from "@mui/material/colors";
 // import Button, { ButtonProps } from "@mui/material/Button";
 import { shopContext } from "../../../provider/ShopContext/ShopContext";
+import { Button } from "@mui/material";
 
-export function UpdateProductForm() {
+export const UpdateProductForm = () => {
   const { currentProduct, uptadeProduct, closeModalADM } =
     useContext(shopContext);
 
@@ -38,8 +39,6 @@ export function UpdateProductForm() {
   });
 
   const submit: SubmitHandler<IProduct> = (formdata) => {
-    // console.log(formdata);
-
     uptadeProduct(formdata);
   };
 
@@ -90,7 +89,10 @@ export function UpdateProductForm() {
         Cadastrar
       </ColorButton> */}
 
-      <button type="submit">Editar</button>
+      <Button className="editar" type="submit">
+        {" "}
+        Editar
+      </Button>
     </form>
   );
-}
+};

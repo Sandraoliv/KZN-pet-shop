@@ -19,7 +19,7 @@ export const StyledProductCard = styled.li`
         border-radius: 10px;
         min-width: 200px;
         max-width: 200px;
-        min-height: 280px;
+        min-height: 300px;
         margin-top: 15px;
       `;
     } else {
@@ -53,50 +53,20 @@ export const StyledProductCard = styled.li`
     font-weight: 100;
   }
 
-  .card__hover {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    right: 0;
-    top: 0;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 10px;
-    display: none;
+  .addToCart {
+    font-family: "Tilt Neon", "Inter", sans-serif;
+
+    background-color: var(--color-assistant);
+  }
+
+  .addToCart:hover {
+    background-color: var(--sucess);
   }
 
   .img__container > img {
     width: 70%;
     height: 70%;
     border-radius: 10px;
-  }
-
-  .img__container:hover {
-    .card__hover {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: absolute;
-      width: 180px;
-      height: 120px;
-      right: 0;
-      top: 0px;
-      padding: 10px;
-      background: rgba(51, 51, 51, 0.1);
-      border-radius: 10px;
-    }
-
-    .card__hover > button {
-      padding: 8px;
-      color: white;
-      border-radius: 10px;
-      background-color: var(--color-secondary);
-    }
   }
 
   h3 {
@@ -130,17 +100,24 @@ export const StyledProductCard = styled.li`
 
   .editar {
     width: 100%;
-    background-color: var(--color-secondary);
+    background-color: var(--color-assistant);
     border-radius: 10px;
     padding: 5px 0;
     color: var(--color-tertiary-transparent);
   }
 
+  .editar:hover {
+    background-color: var(--sucess);
+  }
+
   .deletar {
     width: 100%;
-    background-color: var(--negative);
+    background-color: var(--color-secondary);
     border-radius: 10px;
     padding: 5px 0;
     color: var(--color-tertiary-transparent);
+  }
+  .deletar:hover {
+    background-color: var(--color-secondary-hover);
   }
 `;

@@ -66,7 +66,7 @@ export const StyledCartModal = styled.div`
     margin-top: 15px;
     bottom: 20px;
     border-radius: 10px;
-    background-color: var(--color-secundary);
+    background-color: var(--color-secondary);
   }
 
   .emptyCart {
@@ -90,7 +90,7 @@ export const StyledCartModal = styled.div`
     margin-top: 15px;
     bottom: 20px;
     border-radius: 10px;
-    background-color: var(--color-secundary);
+    background-color: var(--color-secondary);
   }
 
   .cachorrinhoModal {

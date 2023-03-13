@@ -2,13 +2,13 @@ import { useContext } from "react";
 import { shopContext } from "../../provider/ShopContext/ShopContext";
 import { StyledModalDeleteProduct } from "./style";
 
-export function DeleteProductModal() {
+export const DeleteProductModal = () => {
   const { currentProduct, deleteProduct, closeModalADM } =
     useContext(shopContext);
 
-  function handleDelete() {
+  const handleDelete = () => {
     deleteProduct(currentProduct?.id);
-  }
+  };
 
   return (
     <StyledModalDeleteProduct>
@@ -22,4 +22,4 @@ export function DeleteProductModal() {
       </div>
     </StyledModalDeleteProduct>
   );
-}
+};

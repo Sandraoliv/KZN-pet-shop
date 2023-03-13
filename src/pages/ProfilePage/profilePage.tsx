@@ -4,21 +4,32 @@ import Button from "@mui/material/Button";
 import { BackgroundPages } from "../../components/Background/BackgroundPages/backgroundPages";
 import picture from "../../assets/imgPerfil.svg";
 import ModeEditOutlinedIcon from "@mui/icons-material/ModeEditOutlined";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 
 import Dialog from "@mui/material/Dialog";
-import { Input } from "../../components/Form/Input";
+import { Input } from "../../components/Form/Input/input";
 import { SubmitHandler, useForm } from "react-hook-form";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import { UserContext } from "../../provider/UserContext/UserContext";
 import { IUpdateUserFormValues } from "../../provider/UserContext/@Types";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
-export function ProfilePage() {
+export const ProfilePage = () => {
   const [open, setOpen] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
   const { user, uptadeUser, deleteUser } = useContext(UserContext);
+  const navigate = useNavigate();
+  let token = localStorage.getItem("@token");
+
+  useEffect(() => {
+    if (token == undefined) {
+      navigate("/login");
+      toast.error("você deve estar logado para acessar está página");
+    }
+  }, []);
 
   const {
     register,
@@ -48,7 +59,6 @@ export function ProfilePage() {
   };
 
   const submit: SubmitHandler<IUpdateUserFormValues> = (formData) => {
-    console.log(formData);
     uptadeUser(formData, user.id);
   };
 
@@ -123,4 +133,4 @@ export function ProfilePage() {
       </main>
     </SectionProfilePage>
   );
-}
+};

@@ -8,4 +8,8 @@ export const StyledProductList = styled.ul`
   gap: 10px;
   margin-bottom: 20px;
   width: 100%;
+
+  @media (min-width: 1200px) {
+    justify-content: center;
+  }
 `;

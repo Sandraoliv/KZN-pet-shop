@@ -44,10 +44,10 @@ export const StyledShop = styled.div`
     width: 50%;
     max-width: 500px;
     padding: 32px;
-    background-color: var(--color-tertiary-transparent);
+    background-color: white;
   }
 
-  form > h2 {
+  h2 {
     font-weight: 100;
     color: var(--color-secondary);
   }
@@ -74,6 +74,12 @@ export const StyledShop = styled.div`
 
   form > button {
     width: 100%;
+    background-color: var(--color-secondary);
+    color: white;
+  }
+
+  form > button:hover {
+    background-color: var(--color-secondary-hover);
   }
 
   ${({ token }: ITokenState) => {
@@ -124,7 +130,7 @@ export const StyledShop = styled.div`
     width: 900px;
     height: 900px;
     border-radius: 50%;
-    background-color: var(--color-secundary-hover);
+    background-color: var(--color-secondary-hover);
     bottom: 500px;
     right: -500px;
     z-index: -10;
@@ -229,6 +235,7 @@ export const StyledShop = styled.div`
 
   .tags {
     display: none;
+    color: var(--color-secondary);
   }
 
   .ShopTittle {
@@ -257,11 +264,6 @@ export const StyledShop = styled.div`
     height: 100%;
     padding: 10vw;
     padding-top: 150px;
-  }
-
-  main h2 {
-    color: var(--color-secundary);
-    font-weight: 100;
   }
 
   footer {
@@ -298,6 +300,10 @@ export const StyledShop = styled.div`
 
   .companyes > div > div {
     border-radius: 10px;
+  }
+
+  .companyes p {
+    font-size: 1.5rem;
   }
 
   footer img {
@@ -419,13 +425,13 @@ export const StyledShop = styled.div`
 
   @media (min-width: 1500px) {
     .img__container--desktop {
-      bottom: -96px;
+      bottom: -65px;
       right: 10px;
     }
 
     .img__container--desktop > img {
-      width: 900px;
-      height: 500px;
+      width: 800px;
+      height: 400px;
     }
   }
 `;

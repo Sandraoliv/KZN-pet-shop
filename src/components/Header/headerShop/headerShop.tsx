@@ -13,21 +13,26 @@ import TocIcon from "@mui/icons-material/Toc";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
-export function Header() {
+export const Header = () => {
   const [menu, setMenu] = useState(false);
-  const { modal, setModal } = useContext(shopContext);
+  const { modal, setModal, setTokenState, tokenState } =
+    useContext(shopContext);
   const { logoutUser, user } = useContext(UserContext);
 
   let token = localStorage.getItem("@token");
 
-  function menuHamburguer() {
-    setMenu(!menu);
+  if (token) {
+    setTokenState(true);
   }
+
+  const menuHamburguer = () => {
+    setMenu(!menu);
+  };
 
   const navigate = useNavigate();
 
   return (
-    <StyledHeader menu={menu}>
+    <StyledHeader menu={menu} tokenProps={tokenState}>
       <div className="navUp">
         <div className="logo">
           <img src={logo} alt="" />
@@ -45,9 +50,11 @@ export function Header() {
               <LogoutIcon onClick={() => logoutUser()} />
             </IconButton>
 
-            <IconButton className="icon" aria-label="add to shopping cart">
-              <AddShoppingCartIcon onClick={() => setModal(!modal)} />
-            </IconButton>
+            {user?.is_admin ? null : (
+              <IconButton className="icon" aria-label="add to shopping cart">
+                <AddShoppingCartIcon onClick={() => setModal(!modal)} />
+              </IconButton>
+            )}
           </div>
         ) : (
           <div className="nav">
@@ -111,4 +118,4 @@ export function Header() {
       {modal ? <ModalCart /> : null}
     </StyledHeader>
   );
-}
+};
