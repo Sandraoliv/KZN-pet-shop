@@ -9,6 +9,7 @@ import { modalProductFormSchema } from "./validations";
 // import { orange, purple } from "@mui/material/colors";
 // import Button, { ButtonProps } from "@mui/material/Button";
 import { shopContext } from "../../../provider/ShopContext/ShopContext";
+import { Button } from "@mui/material";
 
 export const UpdateProductForm = () => {
   const { currentProduct, uptadeProduct, closeModalADM } =
@@ -88,7 +89,10 @@ export const UpdateProductForm = () => {
         Cadastrar
       </ColorButton> */}
 
-      <button type="submit">Editar</button>
+      <Button className="editar" type="submit">
+        {" "}
+        Editar
+      </Button>
     </form>
   );
 };

@@ -44,7 +44,7 @@ export const StyledShop = styled.div`
     width: 50%;
     max-width: 500px;
     padding: 32px;
-    background-color: var(--color-tertiary-transparent);
+    background-color: white;
   }
 
   h2 {
@@ -74,6 +74,12 @@ export const StyledShop = styled.div`
 
   form > button {
     width: 100%;
+    background-color: var(--color-secondary);
+    color: white;
+  }
+
+  form > button:hover {
+    background-color: var(--color-secondary-hover);
   }
 
   ${({ token }: ITokenState) => {
@@ -124,7 +130,7 @@ export const StyledShop = styled.div`
     width: 900px;
     height: 900px;
     border-radius: 50%;
-    background-color: var(--color-secundary-hover);
+    background-color: var(--color-secondary-hover);
     bottom: 500px;
     right: -500px;
     z-index: -10;

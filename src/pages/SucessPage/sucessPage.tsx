@@ -3,6 +3,8 @@ import { StyledSucessPage } from "./style";
 import catcart from "../../assets/catcart.svg";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
 import { BackgroundPages } from "../../components/Background/BackgroundPages/backgroundPages";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
