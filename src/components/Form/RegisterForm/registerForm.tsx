@@ -7,11 +7,11 @@ import { IRegisterFormValues } from "../../../provider/UserContext/@Types";
 import { GlobalHeader } from "../../Header/globalHeader/globalHeader";
 import imgFormRegister from "../../../assets/imgFormRegister.svg";
 import { MainFormRegister, SectionFormRegister } from "./style";
-import { Input } from "../Input";
+import { Input } from "../Input/input";
 import Button from "@mui/material/Button";
 import { BackgroundPages } from "../../Background/BackgroundPages/backgroundPages";
 
-export function RegisterForm() {
+export const RegisterForm = () => {
   const { registerUser } = useContext(UserContext);
 
   const {
@@ -72,4 +72,4 @@ export function RegisterForm() {
       </MainFormRegister>
     </SectionFormRegister>
   );
-}
+};

@@ -6,7 +6,7 @@ interface IProductProps {
   productList: IProduct[];
 }
 
-export function ProductList({ productList }: IProductProps) {
+export const ProductList = ({ productList }: IProductProps) => {
   return (
     <StyledProductList>
       {productList.map((product: IProduct) => (
@@ -14,4 +14,4 @@ export function ProductList({ productList }: IProductProps) {
       ))}
     </StyledProductList>
   );
-}
+};

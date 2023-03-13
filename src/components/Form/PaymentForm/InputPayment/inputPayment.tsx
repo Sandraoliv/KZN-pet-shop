@@ -8,7 +8,7 @@ interface IInput {
   register: UseFormRegisterReturn<string>;
 }
 
-export function InputPayment({ label, type, register, error }: IInput) {
+export const InputPayment = ({ label, type, register, error }: IInput) => {
   return (
     <TextField
       id="outlined-basic"
@@ -20,4 +20,4 @@ export function InputPayment({ label, type, register, error }: IInput) {
       {...register}
     ></TextField>
   );
-}
+};

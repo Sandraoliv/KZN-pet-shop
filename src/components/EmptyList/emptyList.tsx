@@ -1,6 +1,6 @@
 import { StyledEmptyList } from "./style";
 
-export function EmptyList() {
+export const EmptyList = () => {
   return (
     <StyledEmptyList>
       <p>
@@ -9,4 +9,4 @@ export function EmptyList() {
       </p>
     </StyledEmptyList>
   );
-}
+};

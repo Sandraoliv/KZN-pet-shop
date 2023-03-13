@@ -8,17 +8,17 @@ interface IProductProps {
   product: IProduct;
 }
 
-export function CartProductCard({ product }: IProductProps) {
+export const CartProductCard = ({ product }: IProductProps) => {
   const { productsListCart, setProductsListCart } = useContext(shopContext);
 
-  function removeToCart(id: number, name: string) {
+  const removeToCart = (id: number, name: string) => {
     const newCart = productsListCart.filter(
       (product: IProduct) => product.id != id
     );
     setProductsListCart(newCart);
     localStorage.setItem("@ListCart", JSON.stringify(newCart));
     toast.success(`Produto ${name} removido com sucesso`);
-  }
+  };
 
   return (
     <StyledCartProductCard>
@@ -40,4 +40,4 @@ export function CartProductCard({ product }: IProductProps) {
       </div>
     </StyledCartProductCard>
   );
-}
+};

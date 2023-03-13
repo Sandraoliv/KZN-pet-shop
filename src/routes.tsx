@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
-import { LoginPage } from "./pages/LoginPage";
+import { LoginPage } from "./pages/LoginPage/loginPage";
 import { NotFound } from "./pages/NotFound/notFound";
 import { PaymentPage } from "./pages/PaymentPage/paymentPage";
-import { RegisterPage } from "./pages/RegisterPage";
+import { RegisterPage } from "./pages/RegisterPage/registerPage";
 import { ShopPage } from "./pages/ShopPage/shopPage";
 import { SucessPage } from "./pages/SucessPage/sucessPage";
 import { ShopProvider } from "./provider/ShopContext/ShopContext";
@@ -20,14 +20,8 @@ export const RouterComponent = () => {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/profile" element={<ProfilePage />} />
-          <Route
-            path="/payment"
-            element={token ? <PaymentPage /> : <LoginPage />}
-          />
-          <Route
-            path="/sucess"
-            element={token ? <SucessPage /> : <LoginPage />}
-          />
+          <Route path="/payment" element={<PaymentPage />} />
+          <Route path="/sucess" element={<SucessPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </UserProvider>
