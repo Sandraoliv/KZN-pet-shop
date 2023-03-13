@@ -14,7 +14,7 @@ export function LoginPage() {
       <StyledLoginPage>
         <div className="mainContainer">
           <div className="containerDesktop">
-            <img src={arrow} alt="imagem de seta" />
+            <img src={arrow} alt="imagem de seta" className="arrow" />
             <div className="arrowContainer">
               <p className="imageText">
                 A cada compra sua, <br />

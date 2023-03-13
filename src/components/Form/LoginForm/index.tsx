@@ -20,12 +20,7 @@ export function LoginForm() {
     formState: { errors },
   } = useForm<ILoginFormValues>({ resolver: yupResolver(loginFormSchema) });
 
-  //   function submit(formData: ILoginFormValues) {
-  //     return loginUser(formData);
-  //   }
   const submit: SubmitHandler<ILoginFormValues> = (formData) => {
-    console.log(formData);
-
     loginUser(formData);
   };
 
