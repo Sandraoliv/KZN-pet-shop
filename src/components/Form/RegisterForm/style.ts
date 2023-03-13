@@ -84,6 +84,24 @@ export const MainFormRegister = styled.main`
       background-color: #f57c00;
       box-shadow: none;
     }
+
+    .redirect {
+      color: white;
+      background-color: var(--color-assistant);
+      box-shadow: none;
+
+      font-family: "Tilt Neon";
+    }
+
+    .redirect:hover {
+      background-color: var(--sucess);
+      box-shadow: none;
+    }
+
+    a {
+      width: 100%;
+      color: white;
+    }
   }
 
   @media (min-width: 620px) {
