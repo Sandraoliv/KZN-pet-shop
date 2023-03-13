@@ -17,39 +17,38 @@ export const UserHeader = () => {
     setMenu(!menu);
   };
   return (
-    <UsHeader
-    // menu={menu}
-    >
-      <img src={logo} alt="" />
-      <nav>
-        <ul>
-          <li>
-            <Button className="shop" type="submit" variant="contained">
-              <Link to="/"> Shop </Link>
-            </Button>
-          </li>
-          <li>
-            <IconButton className="icon" aria-label="add to shopping cart">
-              <LogoutIcon onClick={() => logoutUser()} />
-            </IconButton>
-          </li>
-        </ul>
-        <TocIcon className="menuIcon" onClick={() => menuHamburguer()} />
-      </nav>
+    <UsHeader menu={menu}>
+      <div className="navUp">
+        <div className="logo">
+          <img src={logo} alt="" />
+        </div>
 
-      <nav>
-        <ul>
-          <li>
-            <Button className="shop" type="submit" variant="contained">
-              <Link to="/"> Shop </Link>
-            </Button>
-          </li>
-          <li>
-            <IconButton className="icon" aria-label="add to shopping cart">
-              <LogoutIcon onClick={() => logoutUser()} />
-            </IconButton>
-          </li>
-        </ul>
+        <TocIcon className="menuIcon" onClick={() => menuHamburguer()} />
+
+        <nav className="nav">
+          <ul>
+            <li>
+              <Button className="shop" type="submit" variant="contained">
+                <Link to="/"> Shop </Link>
+              </Button>
+            </li>
+            <li>
+              <IconButton className="icon" aria-label="add to shopping cart">
+                <LogoutIcon onClick={() => logoutUser()} />
+              </IconButton>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <nav className="navDown">
+        <Button className="shop" type="submit" variant="contained">
+          <Link to="/"> Shop </Link>
+        </Button>
+
+        <IconButton className="icon" aria-label="add to shopping cart">
+          <LogoutIcon onClick={() => logoutUser()} />
+        </IconButton>
       </nav>
     </UsHeader>
   );
