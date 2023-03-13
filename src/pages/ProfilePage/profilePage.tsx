@@ -19,6 +19,7 @@ import { toast } from "react-toastify";
 
 export const ProfilePage = () => {
   const [open, setOpen] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
   const { user, uptadeUser, deleteUser } = useContext(UserContext);
   const navigate = useNavigate();
   let token = localStorage.getItem("@token");
@@ -34,7 +35,12 @@ export const ProfilePage = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({});
+  } = useForm<IUpdateUserFormValues>({
+    defaultValues: {
+      name: user?.name,
+      email: user?.email,
+    },
+  });
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -42,6 +48,14 @@ export const ProfilePage = () => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleClickOpenDelete = () => {
+    setOpenDelete(true);
+  };
+
+  const handleCloseDelete = () => {
+    setOpenDelete(false);
   };
 
   const submit: SubmitHandler<IUpdateUserFormValues> = (formData) => {
@@ -55,7 +69,6 @@ export const ProfilePage = () => {
       <main>
         <img src={picture} alt="" />
         <section className="infos">
-          {/* <div className='infosUp'> */}
           <ul>
             <li>{user.name}</li>
             <li>{user.email}</li>
@@ -66,7 +79,7 @@ export const ProfilePage = () => {
             </IconButton>
 
             <IconButton className="icon" aria-label="add to shopping cart">
-              <CloseIcon onClick={() => deleteUser(user.id)} />
+              <CloseIcon onClick={handleClickOpenDelete} />
             </IconButton>
           </nav>
 
@@ -91,28 +104,31 @@ export const ProfilePage = () => {
                   register={register("email")}
                   error={errors.email}
                 />
-                <Input
-                  label="Senha"
-                  type="password"
-                  register={register("password")}
-                  error={errors.password}
-                />
-                <Button className="update" type="submit" variant="contained">
+                <Button className="btnSubmit" type="submit" variant="contained">
                   Atualizar
                 </Button>
               </form>
             </DialogProfilePage>
           </Dialog>
-          {/* </div> */}
-          {/* <div>
-            <nav>
-              <ul>
-                <IconButton aria-label="fingerprint" color="secondary">
-                  <AddIcon />
+
+          <Dialog open={openDelete} onClose={handleCloseDelete}>
+            <DialogProfilePage>
+              <div>
+                <h4>Deseja mesmo deletar?</h4>
+                <IconButton className="icon" aria-label="add to shopping cart">
+                  <CloseIcon onClick={handleCloseDelete} />
                 </IconButton>
-              </ul>
-            </nav>
-          </div> */}
+              </div>
+              <Button
+                className="btnSubmit"
+                type="submit"
+                variant="contained"
+                onClick={() => deleteUser(user.id)}
+              >
+                Deletar
+              </Button>
+            </DialogProfilePage>
+          </Dialog>
         </section>
       </main>
     </SectionProfilePage>

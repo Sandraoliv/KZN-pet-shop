@@ -22,7 +22,7 @@ export const StyledModalDeleteProduct = styled.div`
     width: 50%;
     max-width: 300px;
     padding: 32px;
-    background-color: var(--color-tertiary-transparent);
+    background-color: white;
   }
 
   span {
@@ -41,7 +41,12 @@ export const StyledModalDeleteProduct = styled.div`
   button {
     width: 100%;
     padding: 10px 16px;
-    background-color: red;
+    background-color: var(--color-secondary);
     border-radius: 10px;
+    color: white;
+  }
+
+  button:hover {
+    background-color: var(--color-secondary-hover);
   }
 `;

@@ -86,6 +86,9 @@ export const PaymentForm = () => {
           Finalizar compra
         </Button>
       </div>
+      <p className="info-donate">
+        *30% do valor da sua compra esta sendo Doado para instituições
+      </p>
     </StyledFormPayment>
   );
 };

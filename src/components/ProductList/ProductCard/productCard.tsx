@@ -74,22 +74,23 @@ export const ProductCard = ({ product }: IProductProps) => {
 
       {user?.is_admin ? (
         <div className="buttons">
-          <button
+          <Button
             onClick={() => handleUptadeProductState(product)}
             className="editar"
             type="button"
           >
             {" "}
             Editar
-          </button>
-          <button
+          </Button>
+
+          <Button
             onClick={() => handleDeleteProductState(product)}
             className="deletar"
             type="button"
           >
             {" "}
             Deletar
-          </button>
+          </Button>
         </div>
       ) : (
         <Button

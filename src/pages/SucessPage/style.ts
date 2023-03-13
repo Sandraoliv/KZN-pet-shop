@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledSucessPage = styled.div`
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   .content-flex-desktop {
     display: flex;
@@ -51,6 +51,7 @@ export const StyledSucessPage = styled.div`
 
   @media (min-width: 800px) {
     padding: 0 150px;
+    width: 100%;
 
     .content-flex-desktop {
       display: flex;

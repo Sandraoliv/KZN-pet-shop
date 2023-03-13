@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { PaymentForm } from "../../components/Form/PaymentForm/paymentForm";
+import { BackgroundPages } from "../../components/Background/BackgroundPages/backgroundPages";
 import { GlobalHeader } from "../../components/Header/globalHeader/globalHeader";
 import { shopContext } from "../../provider/ShopContext/ShopContext";
 import { StyledPayment, StyledSectionPayment } from "./styles";
@@ -22,6 +23,7 @@ export const PaymentPage = () => {
   return (
     <StyledPayment>
       <GlobalHeader />
+      <BackgroundPages />
       <StyledSectionPayment>
         <PaymentForm />
       </StyledSectionPayment>

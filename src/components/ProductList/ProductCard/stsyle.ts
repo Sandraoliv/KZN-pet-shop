@@ -100,17 +100,24 @@ export const StyledProductCard = styled.li`
 
   .editar {
     width: 100%;
-    background-color: var(--color-secondary);
+    background-color: var(--color-assistant);
     border-radius: 10px;
     padding: 5px 0;
     color: var(--color-tertiary-transparent);
   }
 
+  .editar:hover {
+    background-color: var(--sucess);
+  }
+
   .deletar {
     width: 100%;
-    background-color: var(--negative);
+    background-color: var(--color-secondary);
     border-radius: 10px;
     padding: 5px 0;
     color: var(--color-tertiary-transparent);
+  }
+  .deletar:hover {
+    background-color: var(--color-secondary-hover);
   }
 `;

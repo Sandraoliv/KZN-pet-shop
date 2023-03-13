@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
+import { BackgroundPages } from "../../components/Background/BackgroundPages/backgroundPages";
 
 export const SucessPage = () => {
   const navigate = useNavigate();
@@ -18,21 +19,24 @@ export const SucessPage = () => {
   }, []);
 
   return (
-    <StyledSucessPage>
+    <div>
       <SuccessHeader />
-      <div className="content-flex-desktop">
-        <div className="container-mensage">
-          <p>Compra finalizada com sucesso </p>
+      <StyledSucessPage>
+        <BackgroundPages />
+        <div className="content-flex-desktop">
+          <div className="container-mensage">
+            <p>Compra finalizada com sucesso </p>
+          </div>
+          <div className="container-image">
+            <img src={catcart} alt="" />
+          </div>
         </div>
-        <div className="container-image">
-          <img src={catcart} alt="" />
+        <div className="container-button">
+          <Button onClick={() => navigate("/")} variant="contained">
+            SHOP
+          </Button>
         </div>
-      </div>
-      <div className="container-button">
-        <Button onClick={() => navigate("/")} variant="contained">
-          SHOP
-        </Button>
-      </div>
-    </StyledSucessPage>
+      </StyledSucessPage>
+    </div>
   );
 };
