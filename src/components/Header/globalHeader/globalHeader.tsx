@@ -3,7 +3,7 @@ import logo from "../../../assets/KNZLOGO.svg";
 import { GblHeader } from "./style";
 import Button from "@mui/material/Button";
 
-export function GlobalHeader() {
+export const GlobalHeader = () => {
   return (
     <GblHeader>
       <ul>
@@ -18,4 +18,4 @@ export function GlobalHeader() {
       </ul>
     </GblHeader>
   );
-}
+};

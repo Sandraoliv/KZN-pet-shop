@@ -13,7 +13,7 @@ import TocIcon from "@mui/icons-material/Toc";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
-export function Header() {
+export const Header = () => {
   const [menu, setMenu] = useState(false);
   const { modal, setModal, setTokenState, tokenState } =
     useContext(shopContext);
@@ -25,9 +25,9 @@ export function Header() {
     setTokenState(true);
   }
 
-  function menuHamburguer() {
+  const menuHamburguer = () => {
     setMenu(!menu);
-  }
+  };
 
   const navigate = useNavigate();
 
@@ -50,9 +50,11 @@ export function Header() {
               <LogoutIcon onClick={() => logoutUser()} />
             </IconButton>
 
-            <IconButton className="icon" aria-label="add to shopping cart">
-              <AddShoppingCartIcon onClick={() => setModal(!modal)} />
-            </IconButton>
+            {user?.is_admin ? null : (
+              <IconButton className="icon" aria-label="add to shopping cart">
+                <AddShoppingCartIcon onClick={() => setModal(!modal)} />
+              </IconButton>
+            )}
           </div>
         ) : (
           <div className="nav">
@@ -116,4 +118,4 @@ export function Header() {
       {modal ? <ModalCart /> : null}
     </StyledHeader>
   );
-}
+};

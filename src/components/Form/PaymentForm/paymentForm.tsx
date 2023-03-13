@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { StyledSpanFree } from "../../../pages/PaymentPage/styles";
 import { shopContext } from "../../../provider/ShopContext/ShopContext";
-import { InputPayment } from "./InputPayment";
+import { InputPayment } from "./InputPayment/inputPayment";
 import { StyledFormPayment } from "./style";
 import { IAdressFormValue } from "../../../provider/UserContext/@Types";
 import { AdressFormSchema } from "./validations";
@@ -15,7 +15,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
 
-export function PaymentForm() {
+export const PaymentForm = () => {
   const { productsListCart, setProductsListCart } = useContext(shopContext);
   const [endereco, setEndereco] = useState("");
   const [exibirFreteGratis, setExibirFreteGratis] = useState(false);
@@ -27,11 +27,11 @@ export function PaymentForm() {
 
   const navigate = useNavigate();
 
-  function submit() {
+  const submit = () => {
     setProductsListCart([]);
     navigate("/sucess");
     localStorage.removeItem("@ListCart");
-  }
+  };
 
   let totalValue = 0;
 
@@ -91,4 +91,4 @@ export function PaymentForm() {
       </p>
     </StyledFormPayment>
   );
-}
+};

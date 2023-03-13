@@ -18,7 +18,7 @@ import { AddProductForm } from "../../components/Form/AddProductForm/addProductF
 import { UpdateProductForm } from "../../components/Form/UpdateProductForm/updateProductForm";
 import { AddCompanyeForm } from "../../components/Form/AddCompanyeForm/addCompanyeForm";
 
-export function ShopPage() {
+export const ShopPage = () => {
   const {
     addCompanyeState,
     setAddCompanyeState,
@@ -50,7 +50,6 @@ export function ShopPage() {
   useEffect(() => {
     loadProductList();
     loadCompanyes();
-    console.log(user);
 
     if (tokenState) {
       setTokenState(true);
@@ -76,22 +75,22 @@ export function ShopPage() {
     setAcessorios(acessorios);
   }, [productList]);
 
-  useEffect(() => {
-    if (token == null && user?.is_admin == true) {
-      navigate("/login");
-      toast.error("Você deve estar logado para acessar essa página !!");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (token == null && user?.is_admin == true) {
+  //     navigate("/login");
+  //     toast.error("Você deve estar logado para acessar essa página !!");
+  //   }
+  // }, []);
 
-  function handleAddProductState() {
+  const handleAddProductState = () => {
     setAddProductState(!addProductState);
     setModalADM(!modalADM);
-  }
+  };
 
-  function handleAddCompanyeState() {
+  const handleAddCompanyeState = () => {
     setAddCompanyeState(!addCompanyeState);
     setModalADM(!modalADM);
-  }
+  };
 
   return (
     <StyledShop token={tokenState}>
@@ -103,35 +102,37 @@ export function ShopPage() {
 
       <div className="orangeBall"></div>
 
-      <section className="banner">
-        <div className="paragraph">
-          <p>Produtos de alta qualidade para seu pet pensando em todos</p>
-          <span>
-            Venha conhecer e nos ajudar nessa causa que aquece o coração
-          </span>
+      {user?.is_admin ? null : (
+        <section className="banner">
+          <div className="paragraph">
+            <p>Produtos de alta qualidade para seu pet pensando em todos</p>
+            <span>
+              Venha conhecer e nos ajudar nessa causa que aquece o coração
+            </span>
 
-          {/* quando clica a pagina quebra */}
-          <a href="/#footer " className="buttonArrow">
-            <p>Instituições beneficiadas</p>
-            <div>
-              <FiArrowRight />
-            </div>
-          </a>
-        </div>
+            {/* quando clica a pagina quebra */}
+            <a href="/#footer " className="buttonArrow">
+              <p>Instituições beneficiadas</p>
+              <div>
+                <FiArrowRight />
+              </div>
+            </a>
+          </div>
 
-        <div className="img__container--desktop">
-          <img src={cachorrinho} alt="" />
-        </div>
+          <div className="img__container--desktop">
+            <img src={cachorrinho} alt="" />
+          </div>
 
-        <div className="tags">
-          <span>Frete gratis para todo o Brasil</span>
-          <span>30% do faturamento da nossa loja é doado</span>
-        </div>
+          <div className="tags">
+            <span>Frete gratis para todo o Brasil</span>
+            <span>30% do faturamento da nossa loja é doado</span>
+          </div>
 
-        <div className="img__container--mobile">
-          <img src={cachorrinhoMobile} alt="" />
-        </div>
-      </section>
+          <div className="img__container--mobile">
+            <img src={cachorrinhoMobile} alt="" />
+          </div>
+        </section>
+      )}
 
       <main>
         <div className="ShopTittle">
@@ -235,4 +236,4 @@ export function ShopPage() {
       {addCompanyeState ? <AddCompanyeForm /> : null}
     </StyledShop>
   );
-}
+};

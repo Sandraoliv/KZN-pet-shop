@@ -12,7 +12,7 @@ import {
 
 export const shopContext = createContext({} as IShopContext);
 
-export function ShopProvider({ children }: IDefaultProviderProps) {
+export const ShopProvider = ({ children }: IDefaultProviderProps) => {
   const localStorageCart = localStorage.getItem("@ListCart");
   const [modal, setModal] = useState(false);
   const [modalADM, setModalADM] = useState(false);
@@ -42,7 +42,7 @@ export function ShopProvider({ children }: IDefaultProviderProps) {
   let token = localStorage.getItem("@token");
   const navigate = useNavigate();
 
-  async function loadProductList() {
+  const loadProductList = async () => {
     try {
       setLoading(true);
       const response = await api.get<IProduct[]>("/products");
@@ -52,17 +52,15 @@ export function ShopProvider({ children }: IDefaultProviderProps) {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
-  async function addProduct(formData: IProduct) {
+  const addProduct = async (formData: IProduct) => {
     try {
       const response = await api.post<IProduct>("/products", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-
-      console.log(response);
 
       if (response.data.category === "Brinquedo") {
         setBrinquedos([...brinquedos, response.data]);
@@ -85,9 +83,9 @@ export function ShopProvider({ children }: IDefaultProviderProps) {
         }
       }
     }
-  }
+  };
 
-  async function uptadeProduct(formData: IProduct) {
+  const uptadeProduct = async (formData: IProduct) => {
     try {
       const response = await api.patch<IProduct>(
         `/products/${currentProduct?.id}`,
@@ -98,8 +96,6 @@ export function ShopProvider({ children }: IDefaultProviderProps) {
           },
         }
       );
-
-      console.log(response);
 
       if (response.data.category == "Brinquedo") {
         const newArray = brinquedos.map((product) => {
@@ -145,18 +141,15 @@ export function ShopProvider({ children }: IDefaultProviderProps) {
         }
       }
     }
-  }
+  };
 
-  async function deleteProduct(id: number | undefined) {
-    console.log(currentProduct);
+  const deleteProduct = async (id: number | undefined) => {
     try {
       const response = await api.delete(`/products/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-
-      console.log(response);
 
       if (currentProduct?.category == "Brinquedo") {
         const newArray = brinquedos.filter((product) => {
@@ -202,17 +195,15 @@ export function ShopProvider({ children }: IDefaultProviderProps) {
         }
       }
     }
-  }
+  };
 
-  async function addCompanye(formData: ICompanye) {
+  const addCompanye = async (formData: ICompanye) => {
     try {
       const response = await api.post<IProduct>("/companyes", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-
-      console.log(response);
 
       setCompanyes([...companyes, formData]);
       closeModalADM();
@@ -228,9 +219,9 @@ export function ShopProvider({ children }: IDefaultProviderProps) {
         }
       }
     }
-  }
+  };
 
-  async function loadCompanyes() {
+  const loadCompanyes = async () => {
     try {
       setLoading(true);
       const response = await api.get<ICompanye[]>("/companyes");
@@ -240,19 +231,19 @@ export function ShopProvider({ children }: IDefaultProviderProps) {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
-  function handleModal() {
+  const handleModal = () => {
     setModal(!modal);
-  }
+  };
 
-  function closeModalADM() {
+  const closeModalADM = () => {
     setAddProductState(false);
     setUptadeProductState(false);
     setDeleteProductState(false);
     setAddCompanyeState(false);
     setModalADM(false);
-  }
+  };
 
   return (
     <shopContext.Provider
@@ -299,4 +290,4 @@ export function ShopProvider({ children }: IDefaultProviderProps) {
       {children}
     </shopContext.Provider>
   );
-}
+};

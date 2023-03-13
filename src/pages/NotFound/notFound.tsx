@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { StyledNotFoundPage } from "./styles";
 
-export function NotFound() {
+export const NotFound = () => {
   return (
     <StyledNotFoundPage>
       <h1>404 Not Found</h1>
@@ -16,4 +16,4 @@ export function NotFound() {
       </Link>
     </StyledNotFoundPage>
   );
-}
+};

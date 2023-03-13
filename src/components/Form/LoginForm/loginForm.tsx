@@ -7,10 +7,10 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../../provider/UserContext/UserContext";
 import { StyledLoginForm } from "./styledLoginForm";
 import { SubmitHandler } from "react-hook-form/dist/types/form";
-import { Input } from "../Input";
+import { Input } from "../Input/input";
 import Button from "@mui/material/Button";
 
-export function LoginForm() {
+export const LoginForm = () => {
   const navigate = useNavigate();
   const { loginUser } = useContext(UserContext);
 
@@ -24,9 +24,9 @@ export function LoginForm() {
     loginUser(formData);
   };
 
-  function handleRegisterClick() {
+  const handleRegisterClick = () => {
     navigate("/register");
-  }
+  };
 
   return (
     <StyledLoginForm onSubmit={handleSubmit(submit)}>
@@ -57,4 +57,4 @@ export function LoginForm() {
       </div>
     </StyledLoginForm>
   );
-}
+};

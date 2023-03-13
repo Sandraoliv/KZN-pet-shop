@@ -1,12 +1,25 @@
-import { LoginForm } from "../../components/Form/LoginForm";
+import { LoginForm } from "../../components/Form/LoginForm/loginForm";
 import { StyledLoginPage } from "./style";
 import block from "../../assets/Rectangle 33.svg";
 import animals from "../../assets/animais-domesticos-1024x654 1.svg";
 import arrow from "../../assets/Frame 106.svg";
 import { GlobalHeader } from "../../components/Header/globalHeader/globalHeader";
 import { BackgroundPages } from "../../components/Background/BackgroundPages/backgroundPages";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
-export function LoginPage() {
+export const LoginPage = () => {
+  let token = localStorage.getItem("@token");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (token != undefined) {
+      navigate("/");
+      toast.error("Você já está logado em nosso site");
+    }
+  }, []);
+
   return (
     <>
       <GlobalHeader />
@@ -40,4 +53,4 @@ export function LoginPage() {
       </StyledLoginPage>
     </>
   );
-}
+};

@@ -1,16 +1,12 @@
 import { ToastContainer } from "react-toastify";
-import { UserProvider } from "./provider/UserContext/UserContext";
 import { RouterComponent } from "./routes";
 import { GlobalStyles } from "./styles/global";
 import "react-toastify/dist/ReactToastify.css";
 
-function App() {
+const App = () => {
   return (
     <>
-      <UserProvider>
-        <RouterComponent />
-      </UserProvider>
-
+      <RouterComponent />
       <GlobalStyles />
       <ToastContainer
         position="bottom-right"
@@ -26,6 +22,6 @@ function App() {
       />
     </>
   );
-}
+};
 
 export default App;

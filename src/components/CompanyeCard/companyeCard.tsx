@@ -4,7 +4,7 @@ interface ICompanyeProps {
   companye: ICompanye;
 }
 
-export function CompanyeCard({ companye }: ICompanyeProps) {
+export const CompanyeCard = ({ companye }: ICompanyeProps) => {
   return (
     <div>
       <a href={companye.URL} target={"_blank"}>
@@ -12,4 +12,4 @@ export function CompanyeCard({ companye }: ICompanyeProps) {
       </a>
     </div>
   );
-}
+};

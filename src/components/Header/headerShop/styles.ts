@@ -184,9 +184,7 @@ export const StyledHeader = styled.header`
     color: #f57c00;
   }
 
-  @media (min-width: 500px) {
-    /* verer */
-
+  @media (min-width: 550px) {
     .nav {
       display: flex;
       flex-direction: row;
