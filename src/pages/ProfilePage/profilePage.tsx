@@ -17,13 +17,19 @@ import { IUpdateUserFormValues } from "../../provider/UserContext/@Types";
 
 export function ProfilePage() {
   const [open, setOpen] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
   const { user, uptadeUser, deleteUser } = useContext(UserContext);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({});
+  } = useForm<IUpdateUserFormValues>({
+    defaultValues: {
+      name: user?.name,
+      email: user?.email,
+    },
+  });
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -31,6 +37,14 @@ export function ProfilePage() {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleClickOpenDelete = () => {
+    setOpenDelete(true);
+  };
+
+  const handleCloseDelete = () => {
+    setOpenDelete(false);
   };
 
   const submit: SubmitHandler<IUpdateUserFormValues> = (formData) => {
@@ -45,7 +59,6 @@ export function ProfilePage() {
       <main>
         <img src={picture} alt="" />
         <section className="infos">
-          {/* <div className='infosUp'> */}
           <ul>
             <li>{user.name}</li>
             <li>{user.email}</li>
@@ -56,7 +69,7 @@ export function ProfilePage() {
             </IconButton>
 
             <IconButton className="icon" aria-label="add to shopping cart">
-              <CloseIcon onClick={() => deleteUser(user.id)} />
+              <CloseIcon onClick={handleClickOpenDelete} />
             </IconButton>
           </nav>
 
@@ -81,28 +94,31 @@ export function ProfilePage() {
                   register={register("email")}
                   error={errors.email}
                 />
-                <Input
-                  label="Senha"
-                  type="password"
-                  register={register("password")}
-                  error={errors.password}
-                />
-                <Button className="update" type="submit" variant="contained">
+                <Button className="btnSubmit" type="submit" variant="contained">
                   Atualizar
                 </Button>
               </form>
             </DialogProfilePage>
           </Dialog>
-          {/* </div> */}
-          {/* <div>
-            <nav>
-              <ul>
-                <IconButton aria-label="fingerprint" color="secondary">
-                  <AddIcon />
+
+          <Dialog open={openDelete} onClose={handleCloseDelete}>
+            <DialogProfilePage>
+              <div>
+                <h4>Deseja mesmo deletar?</h4>
+                <IconButton className="icon" aria-label="add to shopping cart">
+                  <CloseIcon onClick={handleCloseDelete} />
                 </IconButton>
-              </ul>
-            </nav>
-          </div> */}
+              </div>
+              <Button
+                className="btnSubmit"
+                type="submit"
+                variant="contained"
+                onClick={() => deleteUser(user.id)}
+              >
+                Deletar
+              </Button>
+            </DialogProfilePage>
+          </Dialog>
         </section>
       </main>
     </SectionProfilePage>

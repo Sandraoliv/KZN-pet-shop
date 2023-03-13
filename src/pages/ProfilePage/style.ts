@@ -31,15 +31,6 @@ export const SectionProfilePage = styled.section`
     border-radius: 20px;
   }
 
-  /* .infosUp {
-    display: flex;
-    justify-content: space-between;
-    gap: 200px;
-
-    width: max-content;
-    height: max-content;
-  } */
-
   main > section > ul {
     display: flex;
     flex-direction: column;
@@ -101,7 +92,7 @@ export const DialogProfilePage = styled.section`
     gap: 20px;
   }
 
-  .update {
+  .btnSubmit {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -118,7 +109,7 @@ export const DialogProfilePage = styled.section`
     box-shadow: none;
   }
 
-  .update:hover {
+  .btnSubmit:hover {
     background-color: #f57c00;
     box-shadow: none;
   }
