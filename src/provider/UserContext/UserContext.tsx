@@ -26,6 +26,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
 
   const { setTokenState } = useContext(shopContext);
 
+  const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<IUser>(
     localStorageUser ? JSON.parse(localStorageUser) : {}
@@ -106,6 +107,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
           },
         }
       );
+      setOpen(false);
       setUser(response.data);
       toast.success(`Usuario ${user?.name} Editado com sucesso `);
     } catch (error) {
@@ -165,6 +167,8 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
         getUser,
         uptadeUser,
         deleteUser,
+        open,
+        setOpen,
       }}
     >
       {children}
