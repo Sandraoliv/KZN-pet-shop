@@ -29,7 +29,10 @@ export const StyledFormPayment = styled.form`
 
     font-family: "Tilt Neon";
   }
-
+  .info-donate {
+    text-align: center;
+    margin-top: 10px;
+  }
   .select-container {
     display: flex;
     margin-top: 15px;
