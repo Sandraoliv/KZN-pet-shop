@@ -17,6 +17,7 @@ import { StyledModal } from "../../styles/styleModal";
 import { AddProductForm } from "../../components/Form/AddProductForm/addProductForm";
 import { UpdateProductForm } from "../../components/Form/UpdateProductForm/updateProductForm";
 import { AddCompanyeForm } from "../../components/Form/AddCompanyeForm/addCompanyeForm";
+import { BackgroundShop } from "../../components/Background/BackgroundShop/backgroundShop";
 
 export const ShopPage = () => {
   const {
@@ -95,12 +96,13 @@ export const ShopPage = () => {
   return (
     <StyledShop token={tokenState}>
       <Header />
+      <BackgroundShop />
 
-      <div className="blueBall"></div>
+      {/* <div className="blueBall"></div>
 
       <div className="greenBall"></div>
 
-      <div className="orangeBall"></div>
+      <div className="orangeBall"></div> */}
 
       {user?.is_admin ? null : (
         <section className="banner">
