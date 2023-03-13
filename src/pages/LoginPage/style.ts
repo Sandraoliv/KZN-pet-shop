@@ -5,6 +5,7 @@ export const StyledLoginPage = styled.main`
   flex-direction: column;
   margin: 0 auto;
   align-items: center;
+  height: 100%;
   justify-content: space-evenly;
   width: 100vw;
 
@@ -20,16 +21,18 @@ export const StyledLoginPage = styled.main`
     margin-left: 8px;
     font-weight: 300;
   }
+
   .rectangle {
     width: 19px;
     height: 41px;
   }
   .containerDesktop {
-    width: 649px;
+    width: 746px;
     height: 100%;
     display: flex;
+    gap: 17px;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
     display: none;
     z-index: 4;
   }
@@ -37,37 +40,27 @@ export const StyledLoginPage = styled.main`
     width: 100%;
     height: 100%;
   }
-  .arrowContainer {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-  }
-  .imageText {
-    color: var(--color-secondary);
-    text-align: end;
-    font-size: 2.5rem;
+  .arrow {
+    margin-bottom: 2rem;
+    transform: rotateY(-18deg);
   }
 
   .mainContainer {
-    z-index: 4;
     gap: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 90%;
-    height: 100vh;
+    width: 80%;
+    max-width: 1400px;
+    max-height: 900px;
     align-items: flex-end;
     justify-content: center;
   }
 
   .formContainer {
-    z-index: 3;
     display: flex;
     border-radius: 20px;
-    height: 702px;
-    width: 90%;
+    height: max-content;
     margin: 0 auto;
     align-items: flex-start;
     justify-content: flex-end;
@@ -79,8 +72,9 @@ export const StyledLoginPage = styled.main`
 
   @media (min-width: 769px) {
     .imageText {
+      color: var(--color-secondary);
       text-align: start;
-      font-size: 2.5rem;
+      font-size: 2.2rem;
     }
 
     .StyledLoginPage {
@@ -91,17 +85,20 @@ export const StyledLoginPage = styled.main`
     }
 
     .formContainer {
-      width: 616px;
-      height: 702px;
+      width: 516px;
+      height: max-content;
     }
 
     .containerDesktop {
       display: flex;
+
       flex-direction: row;
     }
 
     .mainContainer {
       flex-direction: row;
+      align-items: center;
+      justify-content: center;
     }
   }
 `;
