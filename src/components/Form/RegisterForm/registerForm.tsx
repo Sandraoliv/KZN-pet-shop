@@ -29,7 +29,7 @@ export function RegisterForm() {
 
     registerUser(newFormData);
   };
-  
+
   return (
     <SectionFormRegister>
       <GlobalHeader />
