@@ -1,10 +1,15 @@
-import { FieldError, UseFormRegisterReturn } from "react-hook-form";
+import {
+  FieldError,
+  FieldErrorsImpl,
+  Merge,
+  UseFormRegisterReturn,
+} from "react-hook-form";
 import TextField from "@mui/material/TextField";
 
 interface IInput {
   type: string;
   register: UseFormRegisterReturn<string>;
-  error?: FieldError | undefined;
+  error?: FieldError | Merge<FieldError, FieldErrorsImpl<any>> | undefined;
   label: string;
 }
 
