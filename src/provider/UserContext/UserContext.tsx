@@ -1,5 +1,5 @@
-import { createContext, useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { createContext, useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   IDefaultProviderProps,
   ILoginFormValues,
@@ -16,21 +16,30 @@ import {
 import { toast } from "react-toastify";
 import axios from "axios";
 import { api } from "../../services/api";
+import { shopContext } from "../ShopContext/ShopContext";
 
 export const UserContext = createContext({} as IUserContext);
 
-export function UserProvider({ children }: IDefaultProviderProps) {
-  // const navigate = useNavigate();
+export const UserProvider = ({ children }: IDefaultProviderProps) => {
+  const navigate = useNavigate();
+  const localStorageUser = localStorage.getItem("@user");
+
+  const { setTokenState } = useContext(shopContext);
+
+  const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState<IUser>();
+  const [user, setUser] = useState<IUser>(
+    localStorageUser ? JSON.parse(localStorageUser) : {}
+  );
+  // const [tokenState, setTokenState] = useState(false);
   let token = localStorage.getItem("@token");
 
-  async function registerUser(formData: IRegisterFormValues) {
+  const registerUser = async (formData: IRegisterFormValues) => {
     try {
       setLoading(true);
       const response = await api.post<IresponseRegister>("/users", formData);
-      toast.success("Usuario cadastrado com sucesso ");
-      // navigate("/login");
+      toast.success(`Usuario ${formData.name} cadastrado com sucesso `);
+      navigate("/login");
     } catch (error) {
       if (axios.isAxiosError<string>(error)) {
         if (error.response?.data == "Email already exists") {
@@ -43,15 +52,17 @@ export function UserProvider({ children }: IDefaultProviderProps) {
     } finally {
       setLoading(false);
     }
-  }
-  async function loginUser(formData: ILoginFormValues) {
+  };
+  const loginUser = async (formData: ILoginFormValues) => {
     try {
       setLoading(true);
-      const response = await api.patch<IresponseLogin>("/login/", formData);
+      const response = await api.post<IresponseLogin>("/login", formData);
       localStorage.setItem("@token", response.data.accessToken);
-      setUser;
+      localStorage.setItem("@user", JSON.stringify(response.data.user));
+
+      toast.success(`Bem vindo de volta ${response.data.user.name}`);
       setUser(response.data.user);
-      // navigate("/shop");
+      navigate("/");
     } catch (error) {
       if (axios.isAxiosError<string>(error)) {
         if (error.response?.data == "Incorrect password") {
@@ -66,9 +77,9 @@ export function UserProvider({ children }: IDefaultProviderProps) {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
-  async function getUser(id: number) {
+  const getUser = async (id: number) => {
     try {
       setLoading(true);
       const response = await api.get<IresponseGetUser>(`/users/${id}`, {
@@ -82,13 +93,13 @@ export function UserProvider({ children }: IDefaultProviderProps) {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
-  async function uptadeUser(formData: IUpdateUserFormValues, id: number) {
+  const uptadeUser = async (formData: IUpdateUserFormValues, id: number) => {
     try {
       setLoading(true);
-      const response = await api.post<IresponseUpdateUser>(
-        `/users/"${id}`,
+      const response = await api.patch<IresponseUpdateUser>(
+        `/users/${id}`,
         formData,
         {
           headers: {
@@ -96,6 +107,7 @@ export function UserProvider({ children }: IDefaultProviderProps) {
           },
         }
       );
+      setOpen(false);
       setUser(response.data);
       toast.success(`Usuario ${user?.name} Editado com sucesso `);
     } catch (error) {
@@ -103,45 +115,63 @@ export function UserProvider({ children }: IDefaultProviderProps) {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
-  async function deleteUser(id: number) {
+  const deleteUser = async (id: number) => {
     try {
       setLoading(true);
-      const response = await api.post<IresponseUpdateUser>(`/users/${id}`, {
+      const response = await api.delete<IresponseUpdateUser>(`/users/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       toast.success(`Usuario ${user?.name} deletado com sucesso `);
-      setUser(undefined);
+      setUser({
+        id: 0,
+        name: "empty",
+        email: "empty",
+        is_admin: false,
+      });
       logoutUser();
     } catch (error) {
       console.log(error);
     } finally {
       setLoading(false);
     }
-  }
+  };
 
-  function logoutUser() {
+  const logoutUser = () => {
+    toast.success(`Até logo ${user?.name}!! `);
     localStorage.removeItem("@token");
-    // navigate("/login");
-  }
+    localStorage.removeItem("@user");
+    setTokenState(false);
+    navigate("/login");
+    setUser({
+      id: 0,
+      name: "empty",
+      email: "empty",
+      is_admin: false,
+    });
+  };
 
   return (
     <UserContext.Provider
       value={{
+        setUser,
         loading,
         setLoading,
         registerUser,
         loginUser,
         logoutUser,
+        user,
         getUser,
         uptadeUser,
         deleteUser,
+        open,
+        setOpen,
       }}
     >
       {children}
     </UserContext.Provider>
   );
-}
+};
